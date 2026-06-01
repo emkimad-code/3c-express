@@ -93,10 +93,15 @@ exports.handler = async (event) => {
       body: JSON.stringify({ success: true })
     };
 
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message })
-    };
-  }
+} catch (error) {
+  console.error("SEND QUOTE ERROR:", error);
+
+  return {
+    statusCode: 500,
+    body: JSON.stringify({
+      error: error.message,
+      details: error
+    })
+  };
+}
 };
