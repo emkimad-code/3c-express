@@ -108,6 +108,16 @@ console.log("ATTACHMENTS:", data.attachments);
      <h3>Package Details</h3>
 ${packagesHtml}
 
+${data.attachments && data.attachments.length > 0 ? `
+  <h2 style="color:#101664;font-size:18px;">Supporting Documents</h2>
+
+  <ul style="padding-left:18px;">
+    ${data.attachments.map(file => `
+      <li>📎 ${file.filename}</li>
+    `).join("")}
+  </ul>
+` : ""}
+
       <h2 style="color:#101664;font-size:18px;">Additional Information</h2>
       <p>${data.shipment_details || "No additional information provided."}</p>
     </div>
