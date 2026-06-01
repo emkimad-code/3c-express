@@ -34,7 +34,7 @@ function getRecipients(service) {
 
 exports.handler = async (event) => {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
 
     const recipients = getRecipients(data.service);
