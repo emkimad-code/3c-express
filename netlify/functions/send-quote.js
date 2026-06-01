@@ -98,6 +98,60 @@ exports.handler = async (event) => {
       `
     });
 
+if (data.email) {
+  await resend.emails.send({
+    from: "3C Express <onboarding@resend.dev>",
+    to: [data.email],
+    subject: `3C Express - Request Received | ${data.request_id}`,
+    html: `
+      <div style="font-family:Arial,sans-serif;background:#f5f7fa;padding:30px;color:#1E293B;">
+        <div style="max-width:680px;margin:auto;background:white;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;">
+
+          <div style="background:#101664;padding:24px;text-align:center;">
+            <h1 style="color:white;margin:0;font-size:24px;">
+              Request Received
+            </h1>
+
+            <p style="color:#C68A2D;margin:8px 0 0;font-weight:bold;">
+              ${data.request_id}
+            </p>
+          </div>
+
+          <div style="padding:28px;">
+            <p>Dear ${data.contact_person || "Customer"},</p>
+
+            <p>
+              Thank you for contacting 3C Express. Your quote request has been successfully received.
+            </p>
+
+            <p>
+              Please keep the following reference number for any future communication:
+            </p>
+
+            <p style="font-size:22px;font-weight:bold;color:#101664;">
+              ${data.request_id}
+            </p>
+
+            <p>
+              Our team will review your request and get back to you shortly.
+            </p>
+
+            <p>
+              Best regards,<br>
+              3C Express Team
+            </p>
+          </div>
+
+          <div style="background:#101664;padding:18px;text-align:center;color:white;font-size:13px;">
+            3C Express — Air, Sea, Road Freight & Customs Clearance
+          </div>
+
+        </div>
+      </div>
+    `
+  });
+}
+
 console.log("RESEND RESULT:", result);
 
     return {
