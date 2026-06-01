@@ -66,7 +66,7 @@ const packagesHtml = packages.map((pkg) => `
 `).join("");
 
     const recipients = getRecipients(data.service);
-
+console.log("ATTACHMENTS:", data.attachments);
    const result = await resend.emails.send({
       from: "3C Express <onboarding@resend.dev>",
       to: recipients,
@@ -119,7 +119,11 @@ ${packagesHtml}
   </div>
 </div>
       `
-attachments: data.attachments || []
+,
+attachments: (data.attachments || []).map((file) => ({
+  filename: file.filename,
+  content: file.content
+}))
     });
 
 if (data.email) {
