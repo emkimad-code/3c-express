@@ -147,13 +147,15 @@ if (quoteForm && requestIdInput) {
     const formData = new FormData(quoteForm);
 
     try {
-      const response = await fetch(quoteForm.action, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json"
-        }
-      });
+     const data = Object.fromEntries(formData.entries());
+
+const response = await fetch("/.netlify/functions/send-quote", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+});
 
       if (response.ok) {
         sessionStorage.setItem("request_id", requestId);
