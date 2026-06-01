@@ -119,6 +119,7 @@ ${packagesHtml}
   </div>
 </div>
       `
+attachments: data.attachments || []
     });
 
 if (data.email) {

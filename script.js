@@ -144,18 +144,35 @@ if (quoteForm && requestIdInput) {
       submitBtn.disabled = true;
     }
 
-    const formData = new FormData(quoteForm);
+   const formData = new FormData(quoteForm);
 
-    try {
-     const data = Object.fromEntries(formData.entries());
+const attachmentsInput = document.getElementById("attachments");
+const attachments = [];
 
-const response = await fetch("/.netlify/functions/send-quote", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data)
-});
+if (attachmentsInput && attachmentsInput.files.length > 0) {
+  for (const file of attachmentsInput.files) {
+    const base64 = await fileToBase64(file);
+
+    attachments.push({
+      filename: file.name,
+      content: base64.split(",")[1],
+      contentType: file.type
+    });
+  }
+}
+
+try {
+  const data = Object.fromEntries(formData.entries());
+
+  data.attachments = attachments;
+
+  const response = await fetch("/.netlify/functions/send-quote", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
 
       if (response.ok) {
         sessionStorage.setItem("request_id", requestId);
@@ -176,5 +193,16 @@ const response = await fetch("/.netlify/functions/send-quote", {
         submitBtn.disabled = false;
       }
     }
+  });
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
   });
 }
