@@ -37,6 +37,34 @@ exports.handler = async (event) => {
     const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
 
+const packages = [];
+
+Object.keys(data).forEach((key) => {
+  const match = key.match(/^package_(\d+)_type$/);
+
+  if (match) {
+    const number = match[1];
+
+    packages.push({
+      number,
+      type: data[`package_${number}_type`] || "",
+      quantity: data[`package_${number}_quantity`] || "",
+      weight: data[`package_${number}_weight`] || "",
+      dimensions: data[`package_${number}_dimensions`] || ""
+    });
+  }
+});
+
+const packagesHtml = packages.map((pkg) => `
+  <h3>Package ${pkg.number}</h3>
+  <p>
+    <strong>Type:</strong> ${pkg.type}<br>
+    <strong>Quantity:</strong> ${pkg.quantity}<br>
+    <strong>Gross Weight:</strong> ${pkg.weight} kg<br>
+    <strong>Dimensions:</strong> ${pkg.dimensions}
+  </p>
+`).join("");
+
     const recipients = getRecipients(data.service);
 
    const result = await resend.emails.send({
@@ -77,13 +105,8 @@ exports.handler = async (event) => {
         <strong>Cargo Value:</strong> ${data.cargo_value || ""}
       </p>
 
-      <h2 style="color:#101664;font-size:18px;">Package 1</h2>
-      <p>
-        <strong>Type:</strong> ${data.package_1_type || ""}<br>
-        <strong>Quantity:</strong> ${data.package_1_quantity || ""}<br>
-        <strong>Gross Weight:</strong> ${data.package_1_weight || ""} kg<br>
-        <strong>Dimensions:</strong> ${data.package_1_dimensions || ""}
-      </p>
+     <h3>Package Details</h3>
+${packagesHtml}
 
       <h2 style="color:#101664;font-size:18px;">Additional Information</h2>
       <p>${data.shipment_details || "No additional information provided."}</p>
