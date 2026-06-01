@@ -70,6 +70,8 @@ exports.handler = async (event) => {
         <strong>Operation:</strong> ${data.operation || ""}<br>
         <strong>Origin:</strong> ${data.origin || ""}<br>
         <strong>Destination:</strong> ${data.destination || ""}<br>
+<strong>Pickup Address:</strong> ${data.pickup_address || ""}<br>
+<strong>Delivery Address:</strong> ${data.delivery_address || ""}<br>
         <strong>HS Code & Commodity:</strong> ${data.commodity_hscode || ""}<br>
         <strong>Incoterm:</strong> ${data.incoterm || ""}<br>
         <strong>Cargo Value:</strong> ${data.cargo_value || ""}
