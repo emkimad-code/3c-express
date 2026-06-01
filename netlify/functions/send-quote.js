@@ -2,7 +2,7 @@ const { Resend } = require("resend");
 
 function getRecipients(service) {
   const air = "emkimad@gmail.com";
-  const sea = "emkimad@gmail.comr";
+  const sea = "emkimad@gmail.com";
   const operations = "lydiabess932@gmail;com";
 
   if (service === "Air Freight") {
