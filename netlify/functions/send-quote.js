@@ -39,7 +39,7 @@ exports.handler = async (event) => {
 
     const recipients = getRecipients(data.service);
 
-    await resend.emails.send({
+   const result = await resend.emails.send({
       from: "3C Express <onboarding@resend.dev>",
       to: recipients,
       subject: `New Quote Request | ${data.service} | ${data.request_id}`,
@@ -87,6 +87,8 @@ exports.handler = async (event) => {
         </div>
       `
     });
+
+console.log("RESEND RESULT:", result);
 
     return {
       statusCode: 200,
