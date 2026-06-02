@@ -37,8 +37,11 @@ exports.handler = async (event) => {
     const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
 
-await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
+const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
   method: "POST",
+  headers: {
+    "Content-Type": "text/plain"
+  },
   body: JSON.stringify({
     reference: data.request_id,
     company: data.company,
@@ -47,6 +50,8 @@ await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib
   })
 });
 
+const sheetText = await sheetResponse.text();
+console.log("GOOGLE SHEET RESULT:", sheetText);
 const packages = [];
 
 Object.keys(data).forEach((key) => {
