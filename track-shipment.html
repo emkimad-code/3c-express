@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Track Shipment | 3C Express</title>
+  <meta name="description" content="Track your 3C Express shipment, quotation or customs process using your reference number.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo-box" aria-label="3C Express Home">
+        <img src="logo.png" alt="3C Express Logo" class="logo-image">
+
+        <div class="logo-text">
+          <strong>
+            3<span class="brand-c">C</span> EXPRESS
+          </strong>
+
+          <span>
+            <span class="brand-c">C</span>argo •
+            <span class="brand-c">C</span>ustoms •
+            <span class="brand-c">C</span>learance
+          </span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="track-shipment.html" class="active">Track Shipment</a></li>
+          <li><a href="index.html#customs">Customs</a></li>
+          <li><a href="index.html#why-us">Why Choose us</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="mobile-menu-label">MENU</div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section section-light" style="padding-top:150px;">
+      <div class="container">
+
+        <div class="center-heading">
+          <div class="section-kicker">Track Shipment</div>
+          <h1 class="section-title">Track your shipment</h1>
+          <p class="section-text">
+            Enter your reference number to check the current status of your shipment,
+            quotation or customs process.
+          </p>
+        </div>
+
+        <div class="form-card" style="max-width:760px;margin:0 auto;position:static;">
+          <div class="field">
+            <label for="tracking-reference">
+              Reference Number
+            </label>
+
+            <input
+              id="tracking-reference"
+              type="text"
+              placeholder="Example: 3CE-20260602-1254"
+              style="text-align:center;"
+            />
+          </div>
+
+          <button
+            id="check-status-btn"
+            class="btn btn-primary"
+            type="button"
+            style="margin-top:22px;width:100%;"
+          >
+            Check Status
+          </button>
+
+         <div id="tracking-result" style="display:none;margin-top:38px;">
+
+  <h2 class="section-title" style="font-size:28px;margin-bottom:20px;">
+    Shipment Status
+  </h2>
+
+  <div id="status-container"></div>
+
+</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div>
+          <div class="section-kicker">Need Help?</div>
+          <h2 class="section-title">Questions about your quotation or shipment?</h2>
+
+          <p class="section-text">
+            If you have any questions regarding your quotation, shipment,
+            customs process or delivery, please contact our team and mention
+            your reference number.
+          </p>
+
+          <ul class="check-list">
+            <li>Quote request follow-up</li>
+            <li>Shipment and customs status</li>
+            <li>Pickup and delivery coordination</li>
+            <li>Operational support from our team</li>
+          </ul>
+
+          <br>
+
+          <a href="index.html#contact" class="btn btn-primary">
+            Contact 3C Express
+          </a>
+        </div>
+
+        <div class="image-card">
+          <img
+            src="about.jpg"
+            alt="Track shipment with 3C Express"
+          >
+
+          <div class="floating-card">
+            <strong>Reference tracking</strong>
+            <span>
+              Follow your shipment using your 3C Express reference number.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <div>
+          <p class="cta-trust">
+            Trusted by Importers & Exporters Since 2006
+          </p>
+
+          <h2>Need a freight solution?</h2>
+
+          <p>
+            Send us your shipment details and our team will get back to you with a tailored logistics solution.
+          </p>
+        </div>
+
+        <a href="index.html#contact" class="btn btn-white">
+          Request a Quote
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <img src="footer.png" alt="3C Express Logo" style="width:260px;margin-bottom:20px;">
+
+          <p class="footer-founded">
+            Founded in 2006
+          </p>
+
+          <p style="max-width:320px;">
+            Air, sea and road freight forwarding, customs clearance and door-to-door logistics solutions from France to the world.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick links</h4>
+
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="track-shipment.html">Track Shipment</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+
+          <ul>
+            <li><a href="index.html#services">Air Freight</a></li>
+            <li><a href="index.html#services">Sea Freight</a></li>
+            <li><a href="index.html#services">Road Freight</a></li>
+            <li><a href="index.html#customs">Customs Clearance</a></li>
+            <li><a href="index.html#why-us">Warehousing & Storage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+
+          <p>
+            50 rue des Chardonnerets<br>
+            93290 Tremblay-en-France<br><br>
+            +33 1 88 33 53 63<br>
+            contact@3cexpress.fr<br><br>
+
+            <a href="track-shipment.html" style="color:#C68A2D;font-weight:700;">
+              Track your shipment →
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © 2026 3C Express. All rights reserved.
+        </span>
+
+        <span>
+          <a href="mentions-legales.html">Legal Notice</a>
+          |
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec";
+const checkStatusBtn = document.getElementById("check-status-btn");
+
+checkStatusBtn.addEventListener("click", async () => {
+
+  const reference =
+    document.getElementById("tracking-reference").value.trim();
+
+  const trackingResult =
+    document.getElementById("tracking-result");
+
+  const statusContainer =
+    document.getElementById("status-container");
+
+  if (!reference) {
+    alert("Please enter a reference number.");
+    return;
+  }
+
+  trackingResult.style.display = "block";
+
+  statusContainer.innerHTML =
+    "<p>Loading...</p>";
+
+  try {
+
+    const response = await fetch(
+      `${APPS_SCRIPT_URL}?reference=${encodeURIComponent(reference)}`
+    );
+
+    const data = await response.json();
+
+    if (!data.found) {
+
+      statusContainer.innerHTML = `
+        <p style="color:red;font-weight:700;">
+          Reference not found.
+        </p>
+      `;
+
+      return;
+    }
+
+    const workflows = {
+  "Air Export": [
+    "Quotation received",
+    "Quotation accepted",
+    "Cargo pickup",
+    "Booking confirmed",
+    "Customs formalities completed",
+    "Delivered to CDG",
+    "Flight departed",
+    "Arrived at destination",
+    "Delivered"
+  ],
+
+  "Air Import": [
+    "Quotation received",
+    "Quotation accepted",
+    "AWB received",
+    "Arrival notice received",
+    "Entered warehouse",
+    "Customs declaration submitted",
+    "Awaiting BAE",
+    "BAE received",
+    "Collected by carrier",
+    "Delivered"
+  ]
+};
+
+const mode = data.mode && workflows[data.mode] ? data.mode : "Air Export";
+
+const steps = workflows[mode];
+
+const currentIndex = steps.findIndex(
+  step => step.trim().toLowerCase() === String(data.status).trim().toLowerCase()
+);
+const isFinalStep = currentIndex === steps.length - 1;
+
+const timelineHtml = steps.map((step, index) => {
+  let icon = "○";
+  let color = "#64748B";
+  let bg = "#F8FAFC";
+  let label = "Upcoming";
+
+  if (index < currentIndex) {
+    icon = "✓";
+    color = "#16A34A";
+    bg = "#ECFDF5";
+    label = "Completed";
+  }
+
+ if (index === currentIndex) {
+
+  if (isFinalStep) {
+    icon = "✓";
+    color = "#16A34A";
+    bg = "#ECFDF5";
+    label = "Completed";
+  } else {
+    icon = "●";
+    color = "#E6891B";
+    bg = "#FFF7ED";
+    label = "Current step";
+  }
+
+}
+  return `
+    <div style="
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:16px;
+      margin-bottom:12px;
+      border-radius:14px;
+      background:${bg};
+      border:1px solid #E2E8F0;
+    ">
+      <div style="
+        width:34px;
+        height:34px;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:800;
+        color:${color};
+        background:white;
+        border:2px solid ${color};
+      ">
+        ${icon}
+      </div>
+
+      <div>
+        <strong style="color:${color};font-size:15px;">
+          ${step}
+        </strong>
+        <br>
+        <span style="font-size:13px;color:#64748B;">
+          ${label}
+        </span>
+      </div>
+    </div>
+  `;
+}).join("");
+
+statusContainer.innerHTML = `
+  <div class="service-card">
+
+    <h3>${data.reference}</h3>
+
+    <p><strong>Client:</strong> ${data.client}</p>
+    <p><strong>Service:</strong> ${data.service}</p>
+  <p><strong>Mode:</strong> ${mode}</p>
+
+    <p style="font-size:18px;font-weight:700;margin-top:20px;">
+      Current Status:
+      <span style="color:#E6891B;">${data.status}</span>
+    </p>
+
+    <div style="margin-top:24px;">
+      ${timelineHtml}
+    </div>
+
+  </div>
+`;
+
+  } catch (error) {
+
+    statusContainer.innerHTML = `
+      <p style="color:red;">
+        Error loading shipment information.
+      </p>
+    `;
+
+    console.error(error);
+  }
+
+});
+
+</script>
+
+</body>
+</html>
