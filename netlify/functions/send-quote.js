@@ -182,13 +182,39 @@ if (data.email) {
               Please keep the following reference number for any future communication:
             </p>
 
-            <p style="font-size:22px;font-weight:bold;color:#101664;">
-              ${data.request_id}
-            </p>
+          <p style="font-size:22px;font-weight:bold;color:#101664;">
+  ${data.request_id}
+</p>
 
-            <p>
-              Our team will review your request and get back to you shortly.
-            </p>
+<p>
+  You can follow the progress of your quotation request, shipment or customs process at any time using our tracking portal.
+</p>
+
+<div style="text-align:center;margin:30px 0;">
+  <a
+    href="https://3cexpress.fr/track-shipment.html"
+    style="
+      display:inline-block;
+      background:#C68A2D;
+      color:#ffffff;
+      padding:14px 28px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:15px;
+    "
+  >
+    Track Your Request
+  </a>
+</div>
+
+<p>
+  Please keep your reference number for future communication with our team.
+</p>
+
+<p>
+  Our team will review your request and get back to you shortly.
+</p>
 
             <p>
               Best regards,<br>
