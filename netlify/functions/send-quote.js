@@ -37,6 +37,16 @@ exports.handler = async (event) => {
     const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
 
+await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    reference: data.request_id,
+    company: data.company,
+    email: data.email,
+    service: data.service
+  })
+});
+
 const packages = [];
 
 Object.keys(data).forEach((key) => {
