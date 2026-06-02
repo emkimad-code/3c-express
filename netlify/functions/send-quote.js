@@ -42,12 +42,13 @@ const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbzt4S
   headers: {
     "Content-Type": "text/plain"
   },
-  body: JSON.stringify({
-    reference: data.request_id,
-    company: data.company,
-    email: data.email,
-    service: data.service
-  })
+body: JSON.stringify({
+  reference: data.request_id,
+  company: data.company,
+  email: data.email,
+  service: data.service,
+  operation: data.operation
+})
 });
 
 const sheetText = await sheetResponse.text();
