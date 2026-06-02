@@ -396,7 +396,15 @@ statusContainer.innerHTML = `
     <p><strong>Client:</strong> ${data.client}</p>
     <p><strong>Service:</strong> ${data.service}</p>
   <p><strong>Mode:</strong> ${mode}</p>
-<p><strong>Last Update:</strong> ${data.lastUpdate || "Not available"}</p>
+<p><strong>AWB / BL Number:</strong> ${data.awbbl || "Pending"}</p>
+<p>
+  <strong>Last Update:</strong>
+  ${
+    data.lastUpdate
+      ? new Date(data.lastUpdate).toLocaleDateString('fr-FR')
+      : "Not available"
+  }
+</p>
 
     <p style="font-size:18px;font-weight:700;margin-top:20px;">
       Current Status:
