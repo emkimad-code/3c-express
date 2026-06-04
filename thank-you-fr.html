@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Demande reçue | 3C Express</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    .thank-you-page{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:var(--light);
+      padding:140px 0 80px;
+    }
+
+    .thank-you-card{
+      background:white;
+      border-radius:26px;
+      padding:46px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+      max-width:760px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .thank-you-card h1{
+      font-family:"Montserrat", sans-serif;
+      color:var(--navy);
+      font-size:42px;
+      margin-bottom:16px;
+    }
+
+    .reference-box{
+      margin:28px 0;
+      padding:22px;
+      border-radius:16px;
+      background:rgba(198,138,45,0.12);
+      color:var(--navy);
+      font-family:"Montserrat", sans-serif;
+      font-weight:800;
+      font-size:24px;
+      letter-spacing:1px;
+    }
+
+    .thank-you-card p{
+      color:var(--grey);
+      font-size:16px;
+      line-height:1.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo-box">
+        <img src="logo.png" alt="3C Express Logo" class="logo-image">
+
+        <div class="logo-text">
+          <strong>3<span class="brand-c">C</span> EXPRESS</strong>
+          <span>
+            <span class="brand-c">C</span>argo •
+            <span class="brand-c">C</span>ustoms •
+            <span class="brand-c">C</span>learance
+          </span>
+        </div>
+      </a>
+
+      <a href="index-fr.html" class="btn btn-primary">Retour au site</a>
+    </div>
+  </header>
+
+  <main class="thank-you-page">
+    <div class="container">
+      <div class="thank-you-card">
+        <div class="section-kicker">
+  Demande reçue
+</div>
+
+<h1>
+  Merci pour votre demande
+</h1>
+
+<p>
+  Votre demande de cotation a bien été transmise à 3C Express.
+</p>
+
+<div class="reference-box" id="reference-number">
+  Chargement de la référence...
+</div>
+
+<p>
+  Veuillez conserver ce numéro de référence pour toute communication
+  future concernant votre demande d'expédition.
+</p>
+
+<p>
+  Notre équipe va étudier votre demande et vous recontactera dans les meilleurs délais.
+</p>
+
+<br>
+
+<a href="index-fr.html" class="btn btn-primary">
+  Retour à l'accueil
+</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref") || sessionStorage.getItem("request_id");
+
+    document.getElementById("reference-number").textContent =
+      ref ? ref : "Référence indisponible";
+  </script>
+
+</body>
+</html>

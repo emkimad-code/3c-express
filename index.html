@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="png" href="favicon.png">
 
 </head>
 
@@ -44,19 +44,42 @@
   </span>
 </div>
       </a>
+<nav>
+  <ul class="nav-menu">
 
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-<li><a href="track-shipment.html">Track Shipment</a></li>
-          <li><a href="#customs">Customs</a></li>
-   <li><a href="#why-us">Why Choose us</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <li><a href="#home">Home</a></li>
+
+    <li><a href="#services">Services</a></li>
+
+    <li><a href="track-shipment.html">Track Shipment</a></li>
+
+    <li class="dropdown">
+
+      <a href="#">About Us ▾</a>
+
+      <ul class="dropdown-menu">
+        <li><a href="#about">About 3C Express</a></li>
+        <li><a href="#why-us">Why Choose Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+      </ul>
+
+    </li>
+
+    <li><a href="#contact">Contact</a></li>
+
+    <li class="dropdown">
+
+      <a href="#">🌐 Language ▾</a>
+
+      <ul class="dropdown-menu">
+        <li><a href="index.html">English</a></li>
+        <li><a href="index-fr.html">Français</a></li>
+      </ul>
+
+    </li>
+
+  </ul>
+</nav>
 
     </div>
   </header>
@@ -73,9 +96,21 @@
         <h1 class="hero-title">Air, Sea & Road <span>Freight Solutions</span></h1>
         <p class="hero-text">Based near Paris Charles de Gaulle Airport, 3C Express provides reliable freight forwarding, customs clearance and door-to-door logistics solutions for import and export shipments.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Request a quote</a>
-          <a href="#services" class="btn btn-outline">Explore services</a>
-  <a href="track-shipment.html" class="btn btn-outline">Track Shipment</a>
+      <div class="hero-actions">
+
+  <a href="#contact" class="btn btn-primary">
+    Request a Quote
+  </a>
+
+  <a href="track-shipment.html" class="btn btn-outline">
+    Track Shipment
+  </a>
+
+  <a href="#services" class="hero-link">
+    Explore Services →
+  </a>
+
+</div>
         </div>
         <div class="hero-badges">
           <div class="badge">Air Freight</div>
@@ -96,7 +131,7 @@
 
         <div class="services-grid">
   <article class="service-card">
-    <div class="service-icon">✈</div>
+    <div class="service-icon"><i data-lucide="plane"></i></div>
     <h3>Air Freight</h3>
     <p> Fast and reliable air freight solutions for urgent shipments,
   including consolidation services to optimize costs and transit times.</p>
@@ -104,7 +139,7 @@
   </article>
 
   <article class="service-card">
-    <div class="service-icon">⛴</div>
+    <div class="service-icon"><i data-lucide="ship"></i></div>
     <h3>Sea Freight</h3>
     <p>  Flexible FCL and LCL ocean freight solutions, including cargo
   consolidation services for efficient international shipping.</p>
@@ -112,29 +147,29 @@
   </article>
 
   <article class="service-card">
-    <div class="service-icon">◆</div>
+    <div class="service-icon"><i data-lucide="truck"></i></div>
     <h3>Road Freight</h3>
     <p>European road transport solutions for full loads, partial loads and coordinated final deliveries.</p>
     <a href="#contact" class="learn-link">Request quote →</a>
   </article>
 
   <article class="service-card">
-    <div class="service-icon">▣</div>
+    <div class="service-icon"><i data-lucide="warehouse"></i></div>
     <h3>Warehousing & Storage</h3>
     <p>   Secure short-term storage solutions,
     inventory management and cargo handling services.</p>
- <a href="#why-us" class="learn-link">Learn more →</a>
+ <a href="#services" class="learn-link">Learn more →</a>
   </article>
 
   <article class="service-card">
-    <div class="service-icon">⌘</div>
+    <div class="service-icon"><i data-lucide="file-check-2"></i></div>
     <h3>Customs Clearance</h3>
     <p>Import and export customs declarations, documentation support and operational guidance for smooth clearance.</p>
     <a href="#customs" class="learn-link">Learn more →</a>
   </article>
 
   <article class="service-card">
-    <div class="service-icon">◈</div>
+    <div class="service-icon"><i data-lucide="package-check"></i></div>
     <h3>Door-to-Door</h3>
     <p>Complete logistics coordination from collection to final delivery, adapted to your shipment requirements.</p>
     <a href="#contact" class="learn-link">Request quote →</a>
@@ -170,33 +205,64 @@
           <h2 class="section-title">A responsive partner for international logistics</h2>
           <p class="section-text">We combine freight forwarding experience, fast communication and flexible solutions to support clients and overseas agents with confidence.</p>
         </div>
-        <div class="why-grid">
-          <div class="why-card"><span>01</span><h3>Fast quotations</h3><p>  Quick and accurate quotations tailored to your shipment requirements,
-  helping you plan your logistics with confidence.</p></div>
-          <div class="why-card"><span>02</span><h3>Reliable tracking</h3><p>  Stay informed throughout the transportation process with clear updates
-  and reliable shipment visibility.</p></div>
-          <div class="why-card"><span>03</span><h3>Flexible solutions</h3><p>  Customized transport and logistics services designed to adapt to your
-  cargo, deadlines and operational needs.
-</p></div>
-          <div class="why-card"><span>04</span><h3>International mindset</h3><p>  Working with clients and partners worldwide, we provide efficient
-  logistics support across international markets.</p></div>
-<div class="why-card">
-  <span>05</span>
-  <h3>Warehousing & Storage</h3>
-  <p>Secure storage solutions, cargo handling and inventory support to keep your supply chain running smoothly.</p>
-</div>
-<div class="why-card">
-  <span>06</span>
+       <div class="why-grid">
 
-  <h3>Strategic Location</h3>
+  <div class="why-card">
+    <span>01</span>
+    <h3>Fast quotations</h3>
+    <p>
+      Quick and accurate quotations tailored to your shipment requirements,
+      helping you plan your logistics with confidence.
+    </p>
+  </div>
 
-  <p>
-    Located near Paris Charles de Gaulle Airport,
-    providing fast access to global air, sea and
-    road freight networks.
-  </p>
+  <div class="why-card">
+    <span>02</span>
+    <h3>20+ Years of Experience</h3>
+    <p>
+      Founded in 2006, 3C Express brings years of operational experience
+      in freight forwarding, customs clearance and international logistics.
+    </p>
+  </div>
+
+  <div class="why-card">
+    <span>03</span>
+    <h3>Flexible solutions</h3>
+    <p>
+      Customized transport and logistics services designed to adapt to your
+      cargo, deadlines and operational needs.
+    </p>
+  </div>
+
+  <div class="why-card">
+    <span>04</span>
+    <h3>International mindset</h3>
+    <p>
+      Working with clients and partners worldwide, we provide efficient
+      logistics support across international markets.
+    </p>
+  </div>
+
+  <div class="why-card">
+    <span>05</span>
+    <h3>Responsive communication</h3>
+    <p>
+      Our team provides clear communication and practical follow-up,
+      helping clients and partners move shipments with confidence.
+    </p>
+  </div>
+
+  <div class="why-card">
+    <span>06</span>
+    <h3>Strategic location</h3>
+    <p>
+      Located near Paris Charles de Gaulle Airport,
+      providing fast access to global air, sea and
+      road freight networks.
+    </p>
+  </div>
+
 </div>
-        </div>
       </div>
     </section>
 
@@ -631,26 +697,55 @@ You may upload multiple files.
 
       <a href="https://wa.me/33791758193" target="_blank">
         +33 7 91 75 81 93
-      </a>
+      </a><a href="tel:+33188335363">
+  +33 1 88 33 53 63
+</a>
     </div>
 
   </div>
 
 </div>
-              <div class="contact-item"><strong>Emails</strong><span>contact@3cexpress.fr<br>operations@3cexpress.fr<br>air@3cexpress.fr<br>sea@3cexpress.fr</span></div>
+              <div class="contact-item"><strong>Emails</strong>
+
+<span>
+<a href="mailto:contact@3cexpress.fr">contact@3cexpress.fr</a><br>
+
+<a href="mailto:operations@3cexpress.fr">
+operations@3cexpress.fr
+</a><br>
+
+<a href="mailto:air@3cexpress.fr">
+air@3cexpress.fr
+</a><br>
+
+<a href="mailto:sea@3cexpress.fr">
+sea@3cexpress.fr
+</a>
+</span></div>
             </div>
 
 <div class="contact-item">
+  <div class="contact-item">
   <strong>Location</strong>
 
   <iframe
-    src="https://www.google.com/maps?q=50+rue+des+Chardonnerets,+93290+Tremblay-en-France&output=embed"
+    src="https://maps.google.com/maps?width=100%25&height=250&hl=en&q=50%20rue%20des%20Chardonnerets,%2093290%20Tremblay-en-France+(3C%20Express)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
     width="100%"
     height="250"
-    style="border:0; border-radius:12px; margin-top:10px;"
-    allowfullscreen=""
+    style="border:0;border-radius:12px;margin-top:10px;"
+    allowfullscreen
     loading="lazy">
   </iframe>
+
+  <div style="margin-top:12px;">
+    <a
+      href="https://maps.google.com/?q=50+rue+des+Chardonnerets,+93290+Tremblay-en-France"
+      target="_blank"
+      class="learn-link">
+      Open in Google Maps →
+    </a>
+  </div>
+</div>
 </div>
 
           </aside>
@@ -674,8 +769,12 @@ You may upload multiple files.
   </p>
 </div>
         <div><h4>Quick links</h4><ul><li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="track-shipment.html">Track Shipment</a></li><li><a href="#about">About</a></li><li><a href="#team">Team</a></li><li><a href="#contact">Contact</a></li></ul></div>
-        <div><h4>Services</h4><ul><li><a href="#services">Air Freight</a></li><li><a href="#services">Sea Freight</a></li><li><a href="#services">Road Freight</a></li><li><a href="#customs">Customs Clearance</a></li><li><a href="#why-us">Warehousing & Storage</a></li></ul></div>
-        <div><h4>Contact</h4><p>50 rue des Chardonnerets<br>93290 Tremblay-en-France<br><br>+33 1 88 33 53 63<br>contact@3cexpress.fr</p><br><br>
+        <div><h4>Services</h4><ul><li><a href="#services">Air Freight</a></li><li><a href="#services">Sea Freight</a></li><li><a href="#services">Road Freight</a></li><li><a href="#customs">Customs Clearance</a></li><li><a href="#services">Warehousing & Storage</a></li></ul></div>
+        <div><h4>Contact</h4><p>50 rue des Chardonnerets<br>93290 Tremblay-en-France<br><br><a href="tel:+33188335363">
+  +33 1 88 33 53 63
+</a><br><a href="mailto:contact@3cexpress.fr">
+contact@3cexpress.fr
+</a></p><br><br>
 <a href="track-shipment.html" style="color:#C68A2D;font-weight:700;">
   Track your shipment →
 </a></div>
@@ -698,6 +797,11 @@ You may upload multiple files.
 </div>
     </div>
   </footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
 
 <script src="script.js"></script>
 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>404 - Page non trouvée | 3C Express</title>
+
+<meta name="description" content="La page que vous recherchez n'existe pas ou a été déplacée.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+.error-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--light);
+  padding:120px 20px;
+}
+
+.error-card{
+  background:white;
+  border-radius:28px;
+  padding:60px;
+  max-width:760px;
+  text-align:center;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.error-code{
+  font-size:90px;
+  font-weight:800;
+  color:#C68A2D;
+  line-height:1;
+  margin-bottom:10px;
+  font-family:"Montserrat", sans-serif;
+}
+
+.error-card h1{
+  color:var(--navy);
+  margin-bottom:20px;
+}
+
+.error-card p{
+  color:var(--grey);
+  max-width:550px;
+  margin:0 auto 30px;
+  line-height:1.8;
+}
+
+.error-actions{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+@media (max-width:768px){
+
+  .error-card{
+    padding:40px 25px;
+  }
+
+  .error-code{
+    font-size:70px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container navbar">
+
+    <a href="index-fr.html" class="logo-box">
+      <img src="logo.png" alt="Logo 3C Express" class="logo-image">
+
+      <div class="logo-text">
+
+        <strong>
+          3<span class="brand-c">C</span> EXPRESS
+        </strong>
+
+        <span>
+          <span class="brand-c">C</span>argo •
+          <span class="brand-c">C</span>ustoms •
+          <span class="brand-c">C</span>learance
+        </span>
+
+      </div>
+    </a>
+
+  </div>
+</header>
+
+<main class="error-page">
+
+  <div class="error-card">
+
+    <div class="section-kicker">
+      Erreur de navigation
+    </div>
+
+    <div class="error-code">
+      404
+    </div>
+
+    <h1>
+      Page non trouvée
+    </h1>
+
+    <p>
+      La page que vous recherchez n'existe pas, a été déplacée
+      ou l'adresse saisie est incorrecte.
+      Vous pouvez revenir à l'accueil ou accéder directement
+      au suivi de vos expéditions.
+    </p>
+
+    <div class="error-actions">
+
+      <a href="index-fr.html" class="btn btn-primary">
+        Retour à l'accueil
+      </a>
+
+      <a href="track-shipment-fr.html" class="btn btn-outline">
+        Suivi d'expédition
+      </a>
+
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>
