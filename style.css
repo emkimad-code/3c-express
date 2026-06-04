@@ -504,3 +504,70 @@ font-weight: 1000;
 .privacy-check a:hover{
   text-decoration: underline;
 }
+
+.service-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.service-icon svg{
+  width:34px;
+  height:34px;
+  stroke-width:2.2;
+}
+
+.hero-link{
+  display:flex;
+  align-items:center;
+  color:#C68A2D;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.hero-link:hover{
+  text-decoration:underline;
+}
+
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  min-width:220px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  padding:10px 0;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:all .25s ease;
+  z-index:999;
+}
+
+.dropdown:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.dropdown-menu li{
+  list-style:none;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:10px 18px;
+  color:#183b70;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.dropdown-menu a:hover{
+  background:#f5f7fa;
+  color:#C68A2D;
+}
