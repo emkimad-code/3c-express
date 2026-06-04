@@ -206,3 +206,30 @@ function fileToBase64(file) {
     reader.readAsDataURL(file);
   });
 }
+
+const serviceSelect = document.getElementById("service");
+const operationField = document.getElementById("operation-field");
+const operationSelect = document.getElementById("operation");
+
+serviceSelect.addEventListener("change", () => {
+
+  const service = serviceSelect.value;
+
+  if (
+    service === "Road Freight" ||
+    service === "Customs Clearance" ||
+    service === "Warehousing & Storage"
+  ) {
+
+    operationField.style.display = "none";
+operationSelect.required = false;
+    operationSelect.value = "";
+
+  } else {
+
+    operationField.style.display = "block";
+operationSelect.required = true;
+
+  }
+
+});
