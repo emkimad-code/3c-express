@@ -468,3 +468,39 @@ font-weight: 1000;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
+
+.privacy-check{
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+.privacy-check label{
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #65758B;
+  font-weight: 400;
+}
+
+.privacy-check input{
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+}
+
+.privacy-check span{
+  display: block;
+}
+
+.privacy-check a{
+  color: #C68A2D;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.privacy-check a:hover{
+  text-decoration: underline;
+}
