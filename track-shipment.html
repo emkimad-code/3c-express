@@ -74,6 +74,11 @@
     </li>
 
   </ul>
+<button class="menu-toggle" id="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 </nav>
 
       <div class="mobile-menu-label">MENU</div>
@@ -318,6 +323,7 @@ checkStatusBtn.addEventListener("click", async () => {
     "Quotation received",
     "Quotation accepted",
     "Cargo pickup",
+"Cargo delivered",
     "Booking confirmed",
     "Customs formalities completed",
     "Delivered to CDG",
@@ -329,15 +335,70 @@ checkStatusBtn.addEventListener("click", async () => {
   "Air Import": [
     "Quotation received",
     "Quotation accepted",
-    "AWB received",
+    "LTA received",
     "Arrival notice received",
     "Entered warehouse",
     "Customs declaration submitted",
-    "Awaiting BAE",
     "BAE received",
+"Released by customs",
     "Collected by carrier",
     "Delivered"
-  ]
+  ],
+
+"Sea Export": [
+  "Quotation received",
+  "Quotation accepted",
+  "Booking confirmed",
+  "Container pickup",
+  "Container loaded",
+  "BL instructions submitted",
+  "VGM completed",
+  "Export customs clearance completed",
+  "Vessel departed",
+  "In transit",
+  "Arrived destination port",
+  "Delivered"
+],
+
+"Sea Import": [
+  "Quotation received",
+  "Quotation accepted",
+  "Arrival notice received",
+  "Container available",
+  "Customs declaration submitted",
+  "Awaiting customs release",
+  "Container released",
+  "Collected",
+  "Delivered"
+],
+
+"Road": [
+  "Quotation received",
+  "Quotation accepted",
+  "Pickup scheduled",
+  "Cargo collected",
+  "In transit",
+  "Delivered"
+],
+
+"Customs": [
+  "Quotation received",
+  "Quotation accepted",
+  "Declaration submitted",
+  "Awaiting customs response",
+  "Completed"
+],
+
+"Storage": [
+  "Quotation received",
+  "Quotation accepted",
+  "Goods received",
+  "Stored",
+  "Ready for release",
+  "Released"
+],
+
+ 
 };
 
 const mode = data.mode && workflows[data.mode] ? data.mode : "Air Export";

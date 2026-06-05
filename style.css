@@ -1190,3 +1190,25 @@ font-weight: 1000;
   width:100px;
   height:auto;
 }
+
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+.menu-toggle span{
+  width:28px;
+  height:3px;
+  background:white;
+  border-radius:3px;
+}
+
+@media (max-width:992px){
+  .menu-toggle{
+    display:flex;
+  }
+}

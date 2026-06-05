@@ -98,6 +98,11 @@
     </li>
 
   </ul>
+<button class="menu-toggle" id="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 </nav>
 
       <div class="mobile-menu-label">MENU</div>
@@ -352,30 +357,85 @@ checkStatusBtn.addEventListener("click", async () => {
     }
 
     const workflows = {
-  "Air Export": [
-    "Quotation received",
-    "Quotation accepted",
-    "Cargo pickup",
-    "Booking confirmed",
-    "Customs formalities completed",
-    "Delivered to CDG",
-    "Flight departed",
-    "Arrived at destination",
-    "Delivered"
-  ],
+"Air Export": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "Enlèvement de la marchandise",
+  "Marchandise livrée",
+  "Réservation confirmée",
+  "Formalités douanières terminées",
+  "Livré à CDG",
+  "Vol parti",
+  "Arrivé à destination",
+  "Livré"
+],
 
-  "Air Import": [
-    "Quotation received",
-    "Quotation accepted",
-    "AWB received",
-    "Arrival notice received",
-    "Entered warehouse",
-    "Customs declaration submitted",
-    "Awaiting BAE",
-    "BAE received",
-    "Collected by carrier",
-    "Delivered"
-  ]
+"Air Import": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "LTA reçue",
+  "Avis d'arrivée reçu",
+  "Entré en entrepôt",
+  "Déclaration en douane déposée",
+  "BAE reçu",
+  "Mainlevée douanière obtenue",
+  "Marchandise récupérée par le transporteur",
+  "Livré"
+],
+
+"Sea Export": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "Réservation confirmée",
+  "Enlèvement du conteneur",
+  "Conteneur chargé",
+  "Instructions BL transmises",
+  "VGM validé",
+  "Dédouanement export terminé",
+  "Navire parti",
+  "En transit",
+  "Arrivé au port de destination",
+  "Livré"
+],
+
+"Sea Import": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "Avis d'arrivée reçu",
+  "Conteneur disponible",
+  "Déclaration en douane déposée",
+  "En attente de mainlevée douanière",
+  "Conteneur libéré",
+  "Marchandise récupérée par le client",
+  "Livré"
+],
+
+"Road": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "Enlèvement programmé",
+  "Marchandise prise en charge",
+  "En transit",
+  "Livré"
+],
+
+"Customs": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "Déclaration déposée",
+  "En attente de réponse des douanes",
+  "Terminé"
+],
+
+"Storage": [
+  "Cotation reçue",
+  "Cotation acceptée",
+  "Marchandise réceptionnée",
+  "Stockée",
+  "Prête à être retirée",
+  "Retirée"
+]
+
 };
 
 const mode = data.mode && workflows[data.mode] ? data.mode : "Air Export";
