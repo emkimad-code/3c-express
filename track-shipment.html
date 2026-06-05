@@ -34,11 +34,7 @@
           </span>
         </div>
       </a>
-<button class="menu-toggle" id="menu-toggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+
       <nav>
   <ul class="nav-menu">
 
@@ -78,7 +74,11 @@
     </li>
 
   </ul>
-
+<button class="menu-toggle" id="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 </nav>
     </div>
   </header>
@@ -518,6 +518,19 @@ statusContainer.innerHTML = `
 
 });
 
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+  }
+});
 </script>
 
 </body>
