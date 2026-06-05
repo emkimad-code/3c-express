@@ -251,11 +251,13 @@ serviceSelect.addEventListener("change", () => {
 
 });
 
-const menuToggle = document.getElementById("menu-toggle");
-const navMenu = document.querySelector(".nav-menu");
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
 
-if(menuToggle && navMenu){
-  menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
-}
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+  }
+});
