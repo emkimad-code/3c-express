@@ -47,6 +47,23 @@ const packagesContainer = document.getElementById("packages-container");
 
 let packageCount = 1;
 
+/* LANGUAGE DETECTION */
+const isFrench = document.documentElement.lang === "fr";
+
+const i18n = {
+  packageLabel:      isFrench ? "Colis"                          : "Package",
+  packageType:       isFrench ? "Type de Colis"                  : "Package Type",
+  packageTypePH:     isFrench ? "Cartons, palettes, caisses..."  : "Cartons, pallets, crates...",
+  quantity:          isFrench ? "Quantité"                       : "Quantity",
+  weight:            isFrench ? "Poids Brut (kg)"                : "Gross Weight (kg)",
+  dimensions:        isFrench ? "Dimensions (L × l × H cm)"      : "Dimensions (L × W × H cm)",
+  removeBtn:         isFrench ? "Supprimer ce colis"             : "Remove this package",
+  submitting:        isFrench ? "Envoi en cours..."              : "Submitting...",
+  sendRequest:       isFrench ? "Envoyer la demande"             : "Send request",
+  errorMsg:          isFrench ? "Une erreur est survenue. Veuillez réessayer ou nous contacter directement." : "An error occurred. Please try again or contact us directly.",
+  thankYouPage:      isFrench ? "thank-you-fr.html"              : "thank-you.html",
+};
+
 if (addPackageBtn && packagesContainer) {
   addPackageBtn.addEventListener("click", () => {
     packageCount++;
@@ -55,21 +72,21 @@ if (addPackageBtn && packagesContainer) {
     packageBlock.classList.add("package-block");
 
     packageBlock.innerHTML = `
-      <h4>Package ${packageCount}</h4>
+      <h4>${i18n.packageLabel} ${packageCount}</h4>
 
       <div class="package-grid">
         <div class="field">
-          <label>Package Type <span class="required">*</span></label>
+          <label>${i18n.packageType} <span class="required">*</span></label>
           <input
             name="package_${packageCount}_type"
             type="text"
-            placeholder="Cartons, pallets, crates..."
+            placeholder="${i18n.packageTypePH}"
             required
           />
         </div>
 
         <div class="field">
-          <label>Quantity <span class="required">*</span></label>
+          <label>${i18n.quantity} <span class="required">*</span></label>
           <input
             name="package_${packageCount}_quantity"
             type="number"
@@ -79,7 +96,7 @@ if (addPackageBtn && packagesContainer) {
         </div>
 
         <div class="field">
-          <label>Gross Weight (kg) <span class="required">*</span></label>
+          <label>${i18n.weight} <span class="required">*</span></label>
           <input
             name="package_${packageCount}_weight"
             type="number"
@@ -89,7 +106,7 @@ if (addPackageBtn && packagesContainer) {
         </div>
 
         <div class="field">
-          <label>Dimensions (L × W × H cm) <span class="required">*</span></label>
+          <label>${i18n.dimensions} <span class="required">*</span></label>
           <input
             name="package_${packageCount}_dimensions"
             type="text"
@@ -100,7 +117,7 @@ if (addPackageBtn && packagesContainer) {
       </div>
 
       <button type="button" class="remove-package-btn">
-        Remove this package
+        ${i18n.removeBtn}
       </button>
     `;
 
@@ -140,7 +157,7 @@ if (quoteForm && requestIdInput) {
     requestIdInput.value = requestId;
 
     if (submitBtn) {
-      submitBtn.textContent = "Submitting...";
+      submitBtn.textContent = i18n.submitting;
       submitBtn.disabled = true;
     }
 
@@ -176,20 +193,20 @@ try {
 
       if (response.ok) {
         sessionStorage.setItem("request_id", requestId);
-        window.location.href = `thank-you.html?ref=${requestId}`;
+        window.location.href = `${i18n.thankYouPage}?ref=${requestId}`;
       } else {
-        alert("An error occurred. Please try again or contact us directly.");
+        alert(i18n.errorMsg);
 
         if (submitBtn) {
-          submitBtn.textContent = "Send request";
+          submitBtn.textContent = i18n.sendRequest;
           submitBtn.disabled = false;
         }
       }
     } catch (error) {
-      alert("An error occurred. Please try again or contact us directly.");
+      alert(i18n.errorMsg);
 
       if (submitBtn) {
-        submitBtn.textContent = "Send request";
+        submitBtn.textContent = i18n.sendRequest;
         submitBtn.disabled = false;
       }
     }
@@ -211,24 +228,24 @@ const serviceSelect = document.getElementById("service");
 const operationField = document.getElementById("operation-field");
 const operationSelect = document.getElementById("operation");
 
+const noOperationServices = isFrench
+  ? ["Fret Routier", "Dédouanement", "Entreposage & Stockage"]
+  : ["Road Freight", "Customs Clearance", "Warehousing & Storage"];
+
 serviceSelect.addEventListener("change", () => {
 
   const service = serviceSelect.value;
 
-  if (
-    service === "Road Freight" ||
-    service === "Customs Clearance" ||
-    service === "Warehousing & Storage"
-  ) {
+  if (noOperationServices.includes(service)) {
 
     operationField.style.display = "none";
-operationSelect.required = false;
+    operationSelect.required = false;
     operationSelect.value = "";
 
   } else {
 
     operationField.style.display = "block";
-operationSelect.required = true;
+    operationSelect.required = true;
 
   }
 
