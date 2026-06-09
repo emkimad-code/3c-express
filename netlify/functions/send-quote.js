@@ -36,6 +36,7 @@ exports.handler = async (event) => {
   try {
     const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
+const language = data.language || "en";
 
 const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
   method: "POST",
@@ -153,17 +154,35 @@ attachments: (data.attachments || []).map((file) => ({
     });
 
 if (data.email) {
+  const isFrench = language === "fr";
+
+  const clientSubject = isFrench
+    ? `3C Express - Demande reçue | ${data.request_id}`
+    : `3C Express - Request Received | ${data.request_id}`;
+
+  const clientGreeting = isFrench
+    ? `Bonjour ${data.contact_person || ""},`
+    : `Dear ${data.contact_person || "Customer"},`;
+
+  const trackingLink = isFrench
+    ? "https://3cexpress.fr/track-shipment-fr.html"
+    : "https://3cexpress.fr/track-shipment.html";
+
+  const buttonText = isFrench
+    ? "Suivre votre demande"
+    : "Track Your Request";
+
   await resend.emails.send({
     from: "3C Express <onboarding@resend.dev>",
     to: [data.email],
-    subject: `3C Express - Request Received | ${data.request_id}`,
+    subject: clientSubject,
     html: `
       <div style="font-family:Arial,sans-serif;background:#f5f7fa;padding:30px;color:#1E293B;">
         <div style="max-width:680px;margin:auto;background:white;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;">
 
           <div style="background:#101664;padding:24px;text-align:center;">
             <h1 style="color:white;margin:0;font-size:24px;">
-              Request Received
+              ${isFrench ? "Demande reçue" : "Request Received"}
             </h1>
 
             <p style="color:#C68A2D;margin:8px 0 0;font-weight:bold;">
@@ -172,53 +191,63 @@ if (data.email) {
           </div>
 
           <div style="padding:28px;">
-            <p>Dear ${data.contact_person || "Customer"},</p>
+            <p>${clientGreeting}</p>
 
             <p>
-              Thank you for contacting 3C Express. Your quote request has been successfully received.
+              ${isFrench
+                ? "Nous vous remercions pour votre demande. Votre demande de cotation a bien été reçue par 3C Express."
+                : "Thank you for contacting 3C Express. Your quote request has been successfully received."
+              }
             </p>
 
             <p>
-              Please keep the following reference number for any future communication:
+              ${isFrench
+                ? "Veuillez conserver le numéro de référence suivant pour toute communication future :"
+                : "Please keep the following reference number for any future communication:"
+              }
             </p>
 
-          <p style="font-size:22px;font-weight:bold;color:#101664;">
-  ${data.request_id}
-</p>
-
-<p>
-  You can follow the progress of your quotation request, shipment or customs process at any time using our tracking portal.
-</p>
-
-<div style="text-align:center;margin:30px 0;">
-  <a
-    href="https://3cexpress.fr/track-shipment.html"
-    style="
-      display:inline-block;
-      background:#C68A2D;
-      color:#ffffff;
-      padding:14px 28px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:bold;
-      font-size:15px;
-    "
-  >
-    Track Your Request
-  </a>
-</div>
-
-<p>
-  Please keep your reference number for future communication with our team.
-</p>
-
-<p>
-  Our team will review your request and get back to you shortly.
-</p>
+            <p style="font-size:22px;font-weight:bold;color:#101664;">
+              ${data.request_id}
+            </p>
 
             <p>
-              Best regards,<br>
-              3C Express Team
+              ${isFrench
+                ? "Vous pouvez suivre l'avancement de votre demande, expédition ou dossier douanier à tout moment via notre portail de suivi."
+                : "You can follow the progress of your quotation request, shipment or customs process at any time using our tracking portal."
+              }
+            </p>
+
+            <div style="text-align:center;margin:30px 0;">
+              <a
+                href="${trackingLink}"
+                style="
+                  display:inline-block;
+                  background:#C68A2D;
+                  color:#ffffff;
+                  padding:14px 28px;
+                  border-radius:8px;
+                  text-decoration:none;
+                  font-weight:bold;
+                  font-size:15px;
+                "
+              >
+                ${buttonText}
+              </a>
+            </div>
+
+            <p>
+              ${isFrench
+                ? "Notre équipe va étudier votre demande et vous recontactera dans les meilleurs délais."
+                : "Our team will review your request and get back to you shortly."
+              }
+            </p>
+
+            <p>
+              ${isFrench
+                ? "Cordialement,<br>L'équipe 3C Express"
+                : "Best regards,<br>3C Express Team"
+              }
             </p>
           </div>
 
