@@ -1231,3 +1231,24 @@ font-weight: 1000;
     display:flex;
   }
 }
+
+.c5c-brand{
+  color:#183b70;
+  font-weight:700;
+}
+
+.c5c-orange{
+  color:#E6891B;
+}
+
+.email-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    margin-top: 5px;
+}
+
+
+.email-grid a {
+    text-decoration: none;
+}
