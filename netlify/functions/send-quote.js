@@ -168,6 +168,14 @@ if (data.email) {
     ? "https://3cexpress.fr/track-shipment-fr.html"
     : "https://3cexpress.fr/track-shipment.html";
 
+const brochureLink = isFrench
+  ? "https://tranquil-semifreddo-7b47fa.netlify.app/3C-Express-brochure-FR.pdf"
+  : "https://tranquil-semifreddo-7b47fa.netlify.app/3C-Express-brochure-EN.pdf";
+
+const brochureButtonText = isFrench
+  ? "Télécharger la brochure"
+  : "Download Brochure";
+
   const buttonText = isFrench
     ? "Suivre votre demande"
     : "Track Your Request";
@@ -235,6 +243,31 @@ if (data.email) {
                 ${buttonText}
               </a>
             </div>
+
+<p>
+  ${isFrench
+    ? "En attendant le traitement de votre demande, vous pouvez découvrir nos services en téléchargeant notre brochure."
+    : "In the meantime, you can learn more about our services by downloading our company brochure."
+  }
+</p>
+
+<div style="text-align:center;margin:25px 0;">
+  <a
+    href="${brochureLink}"
+    style="
+      display:inline-block;
+      background:#101664;
+      color:#ffffff;
+      padding:12px 24px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:15px;
+    "
+  >
+    📄 ${brochureButtonText}
+  </a>
+</div>
 
             <p>
               ${isFrench
