@@ -53,8 +53,8 @@
       <a href="#">About Us ▾</a>
 
       <ul class="dropdown-menu">
-        <li><a href="index.html#about">About 3C Express</a></li>
         <li><a href="index.html#why-us">Why Choose Us</a></li>
+        <li><a href="index.html#about">About 3C Express</a></li>
         <li><a href="index.html#team">Our Team</a></li>
       </ul>
 
@@ -265,7 +265,7 @@
 
       <div class="footer-bottom">
         <span>
-          © 2026 3C Express. All rights reserved.
+          © <span id="year"></span> 3C Express. All rights reserved.
         </span>
 
         <span>
@@ -538,6 +538,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 </script>
 
 </body>
