@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
       padding:46px;
       box-shadow:var(--shadow);
       border:1px solid var(--border);
-      max-width:760px;
+      max-width:820px;
       margin:0 auto;
       text-align:center;
     }
@@ -38,6 +38,12 @@
       color:var(--navy);
       font-size:42px;
       margin-bottom:16px;
+    }
+
+    .thank-you-card p{
+      color:var(--grey);
+      font-size:16px;
+      line-height:1.8;
     }
 
     .reference-box{
@@ -52,10 +58,46 @@
       letter-spacing:1px;
     }
 
-    .thank-you-card p{
-      color:var(--grey);
-      font-size:16px;
-      line-height:1.8;
+    .thank-you-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin:30px 0;
+    }
+
+    .urgent-box{
+      margin-top:32px;
+      padding:22px;
+      border-radius:18px;
+      background:#F8FAFC;
+      border:1px solid var(--border);
+    }
+
+    .urgent-box strong{
+      color:var(--navy);
+      display:block;
+      margin-bottom:10px;
+    }
+
+    .urgent-box a{
+      color:#C68A2D;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    @media(max-width:768px){
+      .thank-you-card{
+        padding:32px 22px;
+      }
+
+      .thank-you-card h1{
+        font-size:32px;
+      }
+
+      .reference-box{
+        font-size:20px;
+      }
     }
   </style>
 </head>
@@ -64,8 +106,8 @@
 
   <header class="header">
     <div class="container navbar">
-      <a href="index.html" class="logo-box">
-        <img src="logo.png" alt="3C Express Logo" class="logo-image">
+      <a href="index-fr.html" class="logo-box">
+        <img src="logo.png" alt="Logo 3C Express" class="logo-image">
 
         <div class="logo-text">
           <strong>3<span class="brand-c">C</span> EXPRESS</strong>
@@ -84,36 +126,50 @@
   <main class="thank-you-page">
     <div class="container">
       <div class="thank-you-card">
-        <div class="section-kicker">
-  Demande reçue
-</div>
+        <div class="section-kicker">Demande reçue</div>
 
-<h1>
-  Merci pour votre demande
-</h1>
+        <h1>Merci pour votre demande</h1>
 
-<p>
-  Votre demande de cotation a bien été transmise à 3C Express.
-</p>
+        <p>
+          Votre demande de cotation a bien été transmise à 3C Express.
+          Notre équipe va étudier les détails de votre expédition et vous recontactera dans les meilleurs délais.
+        </p>
 
-<div class="reference-box" id="reference-number">
-  Chargement de la référence...
-</div>
+        <div class="reference-box" id="reference-number">
+          Chargement de la référence...
+        </div>
 
-<p>
-  Veuillez conserver ce numéro de référence pour toute communication
-  future concernant votre demande d'expédition.
-</p>
+        <p>
+          Veuillez conserver ce numéro de référence pour toute communication future
+          concernant votre demande de cotation, votre expédition ou votre dossier douanier.
+        </p>
 
-<p>
-  Notre équipe va étudier votre demande et vous recontactera dans les meilleurs délais.
-</p>
+        <div class="thank-you-actions">
+          <a id="track-link" href="track-shipment-fr.html" class="btn btn-primary">
+            Suivre votre demande
+          </a>
 
-<br>
+          <a href="3C-Express-brochure-FR.pdf"
+             target="_blank"
+             class="btn btn-primary">
+            Télécharger la brochure
+          </a>
+        </div>
 
-<a href="index-fr.html" class="btn btn-primary">
-  Retour à l'accueil
-</a>
+        <div class="urgent-box">
+          <strong>Besoin d'une assistance urgente ?</strong>
+
+          <p>
+            Vous pouvez contacter directement notre équipe :
+          </p>
+
+          <p>
+            <a href="tel:+33188335363">+33 1 88 33 53 63</a><br>
+            <a href="mailto:contact@3cexpress.fr">contact@3cexpress.fr</a><br>
+            <a href="https://wa.me/33645641504" target="_blank">WhatsApp : +33 6 45 64 15 04</a>
+          </p>
+        </div>
+
       </div>
     </div>
   </main>
@@ -124,6 +180,12 @@
 
     document.getElementById("reference-number").textContent =
       ref ? ref : "Référence indisponible";
+
+    const trackLink = document.getElementById("track-link");
+
+    if (ref) {
+      trackLink.href = "track-shipment-fr.html?ref=" + encodeURIComponent(ref);
+    }
   </script>
 
 </body>

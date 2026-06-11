@@ -28,7 +28,7 @@
       padding:46px;
       box-shadow:var(--shadow);
       border:1px solid var(--border);
-      max-width:760px;
+      max-width:820px;
       margin:0 auto;
       text-align:center;
     }
@@ -38,6 +38,12 @@
       color:var(--navy);
       font-size:42px;
       margin-bottom:16px;
+    }
+
+    .thank-you-card p{
+      color:var(--grey);
+      font-size:16px;
+      line-height:1.8;
     }
 
     .reference-box{
@@ -52,10 +58,46 @@
       letter-spacing:1px;
     }
 
-    .thank-you-card p{
-      color:var(--grey);
-      font-size:16px;
-      line-height:1.8;
+    .thank-you-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin:30px 0;
+    }
+
+    .urgent-box{
+      margin-top:32px;
+      padding:22px;
+      border-radius:18px;
+      background:#F8FAFC;
+      border:1px solid var(--border);
+    }
+
+    .urgent-box strong{
+      color:var(--navy);
+      display:block;
+      margin-bottom:10px;
+    }
+
+    .urgent-box a{
+      color:#C68A2D;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    @media(max-width:768px){
+      .thank-you-card{
+        padding:32px 22px;
+      }
+
+      .thank-you-card h1{
+        font-size:32px;
+      }
+
+      .reference-box{
+        font-size:20px;
+      }
     }
   </style>
 </head>
@@ -90,6 +132,7 @@
 
         <p>
           Your quote request has been successfully submitted to 3C Express.
+          Our team will review your shipment details and get back to you shortly.
         </p>
 
         <div class="reference-box" id="reference-number">
@@ -98,18 +141,35 @@
 
         <p>
           Please keep this reference number for any future communication
-          regarding your shipment request.
+          regarding your quotation request, shipment or customs process.
         </p>
 
-        <p>
-          Our team will review your request and contact you shortly.
-        </p>
+        <div class="thank-you-actions">
+          <a id="track-link" href="track-shipment.html" class="btn btn-primary">
+            Track your request
+          </a>
 
-        <br>
+        <a href="3C-Express-brochure-EN.pdf"
+   target="_blank"
+   class="btn btn-primary">
+  Download brochure
+</a>
+        </div>
 
-        <a href="index.html" class="btn btn-primary">
-          Back to homepage
-        </a>
+        <div class="urgent-box">
+          <strong>Need urgent assistance?</strong>
+
+          <p>
+            You can contact our team directly:
+          </p>
+
+          <p>
+            <a href="tel:+33188335363">+33 1 88 33 53 63</a><br>
+            <a href="mailto:contact@3cexpress.fr">contact@3cexpress.fr</a><br>
+            <a href="https://wa.me/33645641504" target="_blank">WhatsApp: +33 6 45 64 15 04</a>
+          </p>
+        </div>
+
       </div>
     </div>
   </main>
@@ -120,6 +180,12 @@
 
     document.getElementById("reference-number").textContent =
       ref ? ref : "Reference unavailable";
+
+    const trackLink = document.getElementById("track-link");
+
+    if (ref) {
+      trackLink.href = "track-shipment.html?ref=" + encodeURIComponent(ref);
+    }
   </script>
 
 </body>
