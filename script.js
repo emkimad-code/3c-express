@@ -232,24 +232,28 @@ const noOperationServices = isFrench
   ? ["Fret Routier", "Dédouanement", "Entreposage & Stockage"]
   : ["Road Freight", "Customs Clearance", "Warehousing & Storage"];
 
-serviceSelect.addEventListener("change", () => {
+if (serviceSelect && operationField && operationSelect) {
 
-  const service = serviceSelect.value;
+  serviceSelect.addEventListener("change", () => {
 
-  if (noOperationServices.includes(service)) {
+    const service = serviceSelect.value;
 
-    operationField.style.display = "none";
-    operationSelect.required = false;
-    operationSelect.value = "";
+    if (noOperationServices.includes(service)) {
 
-  } else {
+      operationField.style.display = "none";
+      operationSelect.required = false;
+      operationSelect.value = "";
 
-    operationField.style.display = "block";
-    operationSelect.required = true;
+    } else {
 
-  }
+      operationField.style.display = "block";
+      operationSelect.required = true;
 
-});
+    }
+
+  });
+
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menu-toggle");
