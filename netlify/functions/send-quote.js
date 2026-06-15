@@ -1,9 +1,9 @@
 const { Resend } = require("resend");
 
 function getRecipients(service) {
-  const air = "emkimad@gmail.com";
-  const sea = "emkimad@gmail.com";
-  const operations = "emkimad@gmail.com";
+  const air = "air@3cexpress.fr";
+  const sea = "sea@3cexpress.fr";
+  const operations = "operations@3cexpress.fr";
 
   if (service === "Air Freight") {
     return [air, operations];
@@ -85,7 +85,7 @@ const packagesHtml = packages.map((pkg) => `
     const recipients = getRecipients(data.service);
 console.log("ATTACHMENTS:", data.attachments);
    const result = await resend.emails.send({
-      from: "3C Express <onboarding@resend.dev>",
+      from: "3C Express <contact@3cexpress.fr>",
       to: recipients,
       subject: `New Quote Request | ${data.service} | ${data.request_id}`,
       html: `
@@ -93,7 +93,7 @@ console.log("ATTACHMENTS:", data.attachments);
   <div style="max-width:760px;margin:auto;background:white;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;">
 
     <div style="background:#101664;padding:24px;text-align:center;">
-      <img src="https://tranquil-semifreddo-7b47fa.netlify.app/logo.png" width="90" style="margin-bottom:12px;">
+      <img src="https://www.3cexpress.fr/logo.png" width="90" style="margin-bottom:12px;">
       <h1 style="color:white;margin:0;font-size:24px;">New Quote Request</h1>
       <p style="color:#C68A2D;margin:8px 0 0;font-weight:bold;">
         ${data.request_id}
@@ -164,13 +164,13 @@ if (data.email) {
     ? `Bonjour ${data.contact_person || ""},`
     : `Dear ${data.contact_person || "Customer"},`;
 
-  const trackingLink = isFrench
-    ? "https://3cexpress.fr/track-shipment-fr.html"
-    : "https://3cexpress.fr/track-shipment.html";
+ const trackingLink = isFrench
+  ? "https://www.3cexpress.fr/track-shipment-fr.html"
+  : "https://www.3cexpress.fr/track-shipment.html";
 
 const brochureLink = isFrench
-  ? "https://tranquil-semifreddo-7b47fa.netlify.app/3C-Express-brochure-FR.pdf"
-  : "https://tranquil-semifreddo-7b47fa.netlify.app/3C-Express-brochure-EN.pdf";
+  ? "https://www.3cexpress.fr/3C-Express-brochure-FR.pdf"
+  : "https://www.3cexpress.fr/3C-Express-brochure-EN.pdf";
 
 const brochureButtonText = isFrench
   ? "Télécharger la brochure"
@@ -181,7 +181,7 @@ const brochureButtonText = isFrench
     : "Track Your Request";
 
   await resend.emails.send({
-    from: "3C Express <onboarding@resend.dev>",
+    from: "3C Express <contact@3cexpress.fr>",
     to: [data.email],
     subject: clientSubject,
     html: `

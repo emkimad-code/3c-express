@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Track Shipment | 3C Express</title>
+<meta property="og:url" content="https://www.3cexpress.fr/track-shipment.html">
+<meta property="og:image" content="https://www.3cexpress.fr/og-image.jpg">
+<meta property="og:title" content="Track Shipment | 3C Express">
+<meta property="og:description" content="Track your shipment, quotation or customs process using your reference number.">
   <meta name="description" content="Track your 3C Express shipment, quotation or customs process using your reference number.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,11 +250,11 @@
           <h4>Services</h4>
 
           <ul>
-            <li><a href="index.html#services">Air Freight</a></li>
-            <li><a href="index.html#services">Sea Freight</a></li>
-            <li><a href="index.html#services">Road Freight</a></li>
-            <li><a href="index.html#customs">Customs Clearance</a></li>
-            <li><a href="index.html#why-us">Warehousing & Storage</a></li>
+            <li><a href="air-freight.html">Air Freight</a></li>
+            <li><a href="sea-freight.html">Sea Freight</a></li>
+            <li><a href="road-freight.html">Road Freight</a></li>
+            <li><a href="customs-clearance.html">Customs Clearance</a></li>
+            <li><a href="warehousing-clearance.html">Warehousing & Storage</a></li>
           </ul>
         </div>
 
@@ -355,7 +359,7 @@ checkStatusBtn.addEventListener("click", async () => {
   "Air Import": [
     "Quotation received",
     "Quotation accepted",
-    "LTA received",
+    "AWB received",
     "Arrival notice received",
     "Entered warehouse",
     "Customs declaration submitted",
@@ -376,19 +380,20 @@ checkStatusBtn.addEventListener("click", async () => {
   "Export customs clearance completed",
   "Vessel departed",
   "In transit",
-  "Arrived destination port",
+  "Arrived at destination",
   "Delivered"
 ],
 
 "Sea Import": [
   "Quotation received",
   "Quotation accepted",
+"BL received",
   "Arrival notice received",
+"Import customs declaration submitted",
   "Container available",
-  "Customs declaration submitted",
-  "Awaiting customs release",
+  "Customs clearance completed",
   "Container released",
-  "Collected",
+  "Collected by carrier",
   "Delivered"
 ],
 
@@ -412,7 +417,7 @@ checkStatusBtn.addEventListener("click", async () => {
 "Storage": [
   "Quotation received",
   "Quotation accepted",
-  "Goods received",
+  "Cargo received",
   "Stored",
   "Ready for release",
   "Released"

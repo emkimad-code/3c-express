@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suivi d'expédition | 3C Express">
+<meta property="og:description" content="Suivez votre expédition, votre devis ou votre dossier douanier grâce à votre numéro de référence.">
+<meta property="og:url" content="https://www.3cexpress.fr/track-shipment-fr.html">
+<meta property="og:image" content="https://www.3cexpress.fr/og-image.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Suivi d'expédition | 3C Express">
+<meta name="twitter:description" content="Suivez votre expédition grâce à votre numéro de référence.">
+<meta name="twitter:image" content="https://www.3cexpress.fr/og-image.jpg">
 
   <title>Suivi d'expédition | 3C Express</title>
 
@@ -20,7 +30,7 @@
 
   <header class="header">
     <div class="container navbar">
-      <a href="index.html-fr" class="logo-box" aria-label="3C Express Home">
+      <a href="index-fr.html" class="logo-box" aria-label="3C Express Home">
         <img src="logo.png" alt="3C Express Logo" class="logo-image">
 
         <div class="logo-text">
@@ -45,8 +55,17 @@
 
     <li><a href="index-fr.html#home">Accueil</a></li>
 
-    <li><a href="index-fr.html#services">Services</a></li>
+<li class="dropdown">
+  <a href="#services">Services ▾</a>
 
+  <ul class="dropdown-menu">
+     <li><a href="air-freight-fr.html">Fret aérien</a></li>
+    <li><a href="sea-freight-fr.html">Fret maritime</a></li>
+    <li><a href="road-freight-fr.html">Transport routier</a></li>
+    <li><a href="customs-clearance-fr.html">Dédouanement</a></li>
+    <li><a href="warehousing-storage-fr.html">Entreposage & Stockage</a></li>
+  </ul>
+</li>
     <li>
       <a href="track-shipment-fr.html" class="active">
         Suivi d'expédition
@@ -271,11 +290,11 @@ vers le monde entier.
           <h4>Services</h4>
 
           <ul>
-            <li><a href="index-fr.html#services">Transport aérien</a></li>
-            <li><a href="index-fr.html#services">Transport maritime</a></li>
-            <li><a href="index-fr.html#services">Transport routier</a></li>
-            <li><a href="index-fr.html#customs">Dédouanement</a></li>
-            <li><a href="index-fr.html#why-us">Stockage & entreposage</a></li>
+            <li><a href="air-freight-fr.html">Transport aérien</a></li>
+            <li><a href="sea-freight-fr.html">Transport maritime</a></li>
+            <li><a href="road-freight-fr.html">Transport routier</a></li>
+            <li><a href="customs-clearance-fr.html">Dédouanement</a></li>
+            <li><a href="warehousing-storage-fr.html">Stockage & entreposage</a></li>
           </ul>
         </div>
 
@@ -334,7 +353,7 @@ checkStatusBtn.addEventListener("click", async () => {
     document.getElementById("status-container");
 
   if (!reference) {
-    alert("Veuilez saisir un numéro de référence.");
+    alert("Veuillez saisir un numéro de référence.");
     return;
   }
 
@@ -363,85 +382,133 @@ checkStatusBtn.addEventListener("click", async () => {
     }
 
     const workflows = {
-"Air Export": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "Enlèvement de la marchandise",
-  "Marchandise livrée",
-  "Réservation confirmée",
-  "Formalités douanières terminées",
-  "Livré à CDG",
-  "Vol parti",
-  "Arrivé à destination",
-  "Livré"
-],
+ "Air Export": [
+    "Quotation received",
+    "Quotation accepted",
+    "Cargo pickup",
+"Cargo delivered",
+    "Booking confirmed",
+    "Customs formalities completed",
+    "Delivered to CDG",
+    "Flight departed",
+    "Arrived at destination",
+    "Delivered"
+  ],
 
-"Air Import": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "LTA reçue",
-  "Avis d'arrivée reçu",
-  "Entré en entrepôt",
-  "Déclaration en douane déposée",
-  "BAE reçu",
-  "Mainlevée douanière obtenue",
-  "Marchandise récupérée par le transporteur",
-  "Livré"
-],
+  "Air Import": [
+    "Quotation received",
+    "Quotation accepted",
+    "AWB received",
+    "Arrival notice received",
+    "Entered warehouse",
+    "Customs declaration submitted",
+    "BAE received",
+"Released by customs",
+    "Collected by carrier",
+    "Delivered"
+  ],
 
 "Sea Export": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "Réservation confirmée",
-  "Enlèvement du conteneur",
-  "Conteneur chargé",
-  "Instructions BL transmises",
-  "VGM validé",
-  "Dédouanement export terminé",
-  "Navire parti",
-  "En transit",
-  "Arrivé au port de destination",
-  "Livré"
+  "Quotation received",
+  "Quotation accepted",
+  "Booking confirmed",
+  "Container pickup",
+  "Container loaded",
+  "BL instructions submitted",
+  "VGM completed",
+  "Export customs clearance completed",
+  "Vessel departed",
+  "In transit",
+  "Arrived at destination",
+  "Delivered"
 ],
 
 "Sea Import": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "Avis d'arrivée reçu",
-  "Conteneur disponible",
-  "Déclaration en douane déposée",
-  "En attente de mainlevée douanière",
-  "Conteneur libéré",
-  "Marchandise récupérée par le client",
-  "Livré"
+  "Quotation received",
+  "Quotation accepted",
+"BL received",
+  "Arrival notice received",
+"Import customs declaration submitted",
+  "Container available",
+  "Customs clearance completed",
+  "Container released",
+  "Collected by carrier",
+  "Delivered"
 ],
 
 "Road": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "Enlèvement programmé",
-  "Marchandise prise en charge",
-  "En transit",
-  "Livré"
+  "Quotation received",
+  "Quotation accepted",
+  "Pickup scheduled",
+  "Cargo collected",
+  "In transit",
+  "Delivered"
 ],
 
 "Customs": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "Déclaration déposée",
-  "En attente de réponse des douanes",
-  "Terminé"
+  "Quotation received",
+  "Quotation accepted",
+  "Declaration submitted",
+  "Awaiting customs response",
+  "Completed"
 ],
 
 "Storage": [
-  "Cotation reçue",
-  "Cotation acceptée",
-  "Marchandise réceptionnée",
-  "Stockée",
-  "Prête à être retirée",
-  "Retirée"
-]
+  "Quotation received",
+  "Quotation accepted",
+  "Cargo received",
+  "Stored",
+  "Ready for release",
+  "Released"
+],
 
+};
+
+const translations = {
+  "Quotation received": "Cotation reçue",
+  "Quotation accepted": "Cotation acceptée",
+  "Cargo pickup": "Enlèvement de la marchandise",
+  "Cargo delivered": "Marchandise récupérée",
+  "Booking confirmed": "Réservation confirmée",
+  "Customs formalities completed": "Formalités douanières terminées",
+  "Delivered to CDG": "Livré à CDG",
+  "Flight departed": "Vol parti",
+  "Arrived at destination": "Arrivé à destination",
+  "Delivered": "Livré",
+
+  "AWB received": "LTA reçue",
+  "Arrival notice received": "Avis d'arrivée reçu",
+  "Entered warehouse": "Entré en entrepôt",
+  "Customs declaration submitted": "Déclaration en douane déposée",
+  "BAE received": "BAE reçu",
+  "Released by customs": "Mainlevée douanière obtenue",
+  "Collected by carrier": "Marchandise récupérée par le transporteur",
+
+  "Container pickup": "Enlèvement du conteneur",
+  "Container loaded": "Conteneur chargé",
+  "BL instructions submitted": "Instructions BL transmises",
+  "VGM completed": "VGM validé",
+  "Export customs clearance completed": "Dédouanement export terminé",
+  "Vessel departed": "Navire parti",
+  "In transit": "En transit",
+
+  "BL received": "BL reçu",
+  "Import customs declaration submitted": "Déclaration en douane import déposée",
+  "Container available": "Conteneur disponible",
+  "Customs clearance completed": "Dédouanement terminé",
+  "Container released": "Conteneur libéré",
+
+  "Pickup scheduled": "Enlèvement programmé",
+  "Cargo collected": "Marchandise prise en charge",
+
+  "Declaration submitted": "Déclaration déposée",
+  "Awaiting customs response": "En attente de réponse des douanes",
+  "Completed": "Terminé",
+
+  "Cargo received": "Marchandise réceptionnée",
+  "Stored": "Stockée",
+  "Ready for release": "Prête à être retirée",
+  "Released": "Retirée"
 };
 
 const mode = data.mode && workflows[data.mode] ? data.mode : "Air Export";
@@ -509,7 +576,7 @@ const timelineHtml = steps.map((step, index) => {
 
       <div>
         <strong style="color:${color};font-size:15px;">
-          ${step}
+          ${translations[step] || step}
         </strong>
         <br>
         <span style="font-size:13px;color:#64748B;">
@@ -540,7 +607,7 @@ statusContainer.innerHTML = `
 
     <p style="font-size:18px;font-weight:700;margin-top:20px;">
       Statut actuel :
-      <span style="color:#E6891B;">${data.status}</span>
+      <span style="color:#E6891B;">${translations[data.status] || data.status}</span>
     </p>
 
     <div style="margin-top:24px;">
