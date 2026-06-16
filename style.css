@@ -1357,3 +1357,24 @@ font-weight: 1000;
     font-size: 17px;
   }
 }
+
+@media (max-width: 768px) {
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .form-card,
+  .contact-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    display: block;
+    position: static;
+  }
+}
