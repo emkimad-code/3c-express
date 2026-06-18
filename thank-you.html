@@ -157,7 +157,25 @@
   Download brochure
 </a>
         </div>
+<div class="urgent-box" id="feedback-box">
+  <strong>💬 Your feedback matters</strong>
 
+  <p>
+    Help us improve your experience on our website.
+  </p>
+
+  <textarea
+    id="feedback-comment"
+    placeholder="What could we improve?"
+    style="width:100%;min-height:120px;padding:12px;border:1px solid #dbe3ea;border-radius:10px;margin-top:10px;font-family:inherit;"
+  ></textarea>
+
+  <button id="send-feedback" class="btn btn-primary" style="margin-top:15px;">
+    Send feedback
+  </button>
+
+  <p id="feedback-message" style="margin-top:12px;font-size:14px;"></p>
+</div>
         <div class="urgent-box">
           <strong>Need urgent assistance?</strong>
 
@@ -188,6 +206,43 @@
     if (ref) {
       trackLink.href = "track-shipment.html?ref=" + encodeURIComponent(ref);
     }
+const feedbackButton = document.getElementById("send-feedback");
+const feedbackComment = document.getElementById("feedback-comment");
+const feedbackMessage = document.getElementById("feedback-message");
+
+feedbackButton.addEventListener("click", async () => {
+  const comment = feedbackComment.value.trim();
+
+  if (!comment) {
+    feedbackMessage.textContent = "Please write a comment before sending.";
+    return;
+  }
+
+  feedbackButton.disabled = true;
+  feedbackButton.textContent = "Sending...";
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({
+        type: "feedback",
+        reference: ref || "",
+        comment: comment
+      })
+    });
+
+    feedbackMessage.textContent = "Thank you, your feedback has been sent.";
+    feedbackComment.value = "";
+    feedbackButton.textContent = "Feedback sent";
+  } catch (error) {
+    feedbackMessage.textContent = "An error occurred. Please try again.";
+    feedbackButton.disabled = false;
+    feedbackButton.textContent = "Send feedback";
+  }
+});
   </script>
 
 </body>

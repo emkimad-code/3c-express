@@ -157,7 +157,25 @@
             Télécharger la brochure
           </a>
         </div>
+<div class="urgent-box" id="feedback-box">
+  <strong>💬 Votre avis nous intéresse</strong>
 
+  <p>
+    Aidez-nous à améliorer votre expérience sur notre site.
+  </p>
+
+  <textarea
+    id="feedback-comment"
+    placeholder="Que pourrions-nous améliorer ?"
+    style="width:100%;min-height:120px;padding:12px;border:1px solid #dbe3ea;border-radius:10px;margin-top:10px;font-family:inherit;"
+  ></textarea>
+
+  <button id="send-feedback" class="btn btn-primary" style="margin-top:15px;">
+    Envoyer mon avis
+  </button>
+
+  <p id="feedback-message" style="margin-top:12px;font-size:14px;"></p>
+</div>
         <div class="urgent-box">
           <strong>Besoin d'une assistance urgente ?</strong>
 
@@ -188,6 +206,43 @@
     if (ref) {
       trackLink.href = "track-shipment-fr.html?ref=" + encodeURIComponent(ref);
     }
+const feedbackButton = document.getElementById("send-feedback");
+const feedbackComment = document.getElementById("feedback-comment");
+const feedbackMessage = document.getElementById("feedback-message");
+
+feedbackButton.addEventListener("click", async () => {
+  const comment = feedbackComment.value.trim();
+
+  if (!comment) {
+    feedbackMessage.textContent = "Veuillez écrire un commentaire avant d'envoyer.";
+    return;
+  }
+
+  feedbackButton.disabled = true;
+  feedbackButton.textContent = "Envoi en cours...";
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({
+        type: "feedback",
+        reference: ref || "",
+        comment: comment
+      })
+    });
+
+    feedbackMessage.textContent = "Merci, votre avis a bien été envoyé.";
+    feedbackComment.value = "";
+    feedbackButton.textContent = "Avis envoyé";
+  } catch (error) {
+    feedbackMessage.textContent = "Une erreur est survenue. Veuillez réessayer.";
+    feedbackButton.disabled = false;
+    feedbackButton.textContent = "Envoyer mon avis";
+  }
+});
   </script>
 
 </body>
