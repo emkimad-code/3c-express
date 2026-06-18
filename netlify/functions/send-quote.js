@@ -3,7 +3,7 @@ const { Resend } = require("resend");
 function getRecipients(service) {
   const air = "air@3cexpress.fr";
   const sea = "sea@3cexpress.fr";
-  const operations = "operations@3cexpress.fr";
+  const operations = "emkimad@gmail.com";
 
   if (service === "Air Freight") {
     return [air, operations];
