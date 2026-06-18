@@ -160,9 +160,19 @@
 <div class="urgent-box" id="feedback-box">
   <strong>💬 Votre avis nous intéresse</strong>
 
-  <p>
-    Aidez-nous à améliorer votre expérience sur notre site.
-  </p>
+  <p>Aidez-nous à améliorer votre expérience sur notre site.</p>
+
+  <p>Comment évaluez-vous votre expérience ?</p>
+
+  <div id="rating" style="font-size:34px;margin:15px 0;color:#C68A2D;">
+    <span class="star" data-value="1">☆</span>
+    <span class="star" data-value="2">☆</span>
+    <span class="star" data-value="3">☆</span>
+    <span class="star" data-value="4">☆</span>
+    <span class="star" data-value="5">☆</span>
+  </div>
+
+  <input type="hidden" id="feedback-rating" value="0">
 
   <textarea
     id="feedback-comment"
@@ -206,12 +216,33 @@
     if (ref) {
       trackLink.href = "track-shipment-fr.html?ref=" + encodeURIComponent(ref);
     }
+const stars = document.querySelectorAll(".star");
+const ratingInput = document.getElementById("feedback-rating");
 const feedbackButton = document.getElementById("send-feedback");
 const feedbackComment = document.getElementById("feedback-comment");
 const feedbackMessage = document.getElementById("feedback-message");
 
+stars.forEach(star => {
+  star.style.cursor = "pointer";
+
+  star.addEventListener("click", () => {
+    const value = parseInt(star.dataset.value);
+    ratingInput.value = value;
+
+    stars.forEach(s => {
+      s.textContent = parseInt(s.dataset.value) <= value ? "★" : "☆";
+    });
+  });
+});
+
 feedbackButton.addEventListener("click", async () => {
   const comment = feedbackComment.value.trim();
+  const rating = ratingInput.value;
+
+  if (rating === "0") {
+    feedbackMessage.textContent = "Veuillez sélectionner une note.";
+    return;
+  }
 
   if (!comment) {
     feedbackMessage.textContent = "Veuillez écrire un commentaire avant d'envoyer.";
@@ -221,27 +252,20 @@ feedbackButton.addEventListener("click", async () => {
   feedbackButton.disabled = true;
   feedbackButton.textContent = "Envoi en cours...";
 
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain"
-      },
-      body: JSON.stringify({
-        type: "feedback",
-        reference: ref || "",
-        comment: comment
-      })
-    });
+  await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
+    method: "POST",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({
+      type: "feedback",
+      reference: ref || "",
+      rating: rating,
+      comment: comment
+    })
+  });
 
-    feedbackMessage.textContent = "Merci, votre avis a bien été envoyé.";
-    feedbackComment.value = "";
-    feedbackButton.textContent = "Avis envoyé";
-  } catch (error) {
-    feedbackMessage.textContent = "Une erreur est survenue. Veuillez réessayer.";
-    feedbackButton.disabled = false;
-    feedbackButton.textContent = "Envoyer mon avis";
-  }
+  feedbackMessage.textContent = "Merci, votre avis a bien été envoyé.";
+  feedbackComment.value = "";
+  feedbackButton.textContent = "Avis envoyé";
 });
   </script>
 

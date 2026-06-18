@@ -160,13 +160,23 @@
 <div class="urgent-box" id="feedback-box">
   <strong>💬 Your feedback matters</strong>
 
-  <p>
-    Help us improve your experience on our website.
-  </p>
+  <p>Help us improve your experience on our website.</p>
+
+  <p>How would you rate your experience?</p>
+
+  <div id="rating" style="font-size:34px;margin:15px 0;color:#C68A2D;">
+    <span class="star" data-value="1">☆</span>
+    <span class="star" data-value="2">☆</span>
+    <span class="star" data-value="3">☆</span>
+    <span class="star" data-value="4">☆</span>
+    <span class="star" data-value="5">☆</span>
+  </div>
+
+  <input type="hidden" id="feedback-rating" value="0">
 
   <textarea
     id="feedback-comment"
-    placeholder="What could we improve?"
+    placeholder="What could we improve"
     style="width:100%;min-height:120px;padding:12px;border:1px solid #dbe3ea;border-radius:10px;margin-top:10px;font-family:inherit;"
   ></textarea>
 
@@ -206,42 +216,56 @@
     if (ref) {
       trackLink.href = "track-shipment.html?ref=" + encodeURIComponent(ref);
     }
+const stars = document.querySelectorAll(".star");
+const ratingInput = document.getElementById("feedback-rating");
 const feedbackButton = document.getElementById("send-feedback");
 const feedbackComment = document.getElementById("feedback-comment");
 const feedbackMessage = document.getElementById("feedback-message");
 
+stars.forEach(star => {
+  star.style.cursor = "pointer";
+
+  star.addEventListener("click", () => {
+    const value = parseInt(star.dataset.value);
+    ratingInput.value = value;
+
+    stars.forEach(s => {
+      s.textContent = parseInt(s.dataset.value) <= value ? "★" : "☆";
+    });
+  });
+});
+
 feedbackButton.addEventListener("click", async () => {
   const comment = feedbackComment.value.trim();
+  const rating = ratingInput.value;
+
+  if (rating === "0") {
+    feedbackMessage.textContent = "Please select a rating.";
+    return;
+  }
 
   if (!comment) {
-    feedbackMessage.textContent = "Please write a comment before sending.";
+    feedbackMessage.textContent = "Please write a comment before sending";
     return;
   }
 
   feedbackButton.disabled = true;
   feedbackButton.textContent = "Sending...";
 
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain"
-      },
-      body: JSON.stringify({
-        type: "feedback",
-        reference: ref || "",
-        comment: comment
-      })
-    });
+  await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
+    method: "POST",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({
+      type: "feedback",
+      reference: ref || "",
+      rating: rating,
+      comment: comment
+    })
+  });
 
-    feedbackMessage.textContent = "Thank you, your feedback has been sent.";
-    feedbackComment.value = "";
-    feedbackButton.textContent = "Feedback sent";
-  } catch (error) {
-    feedbackMessage.textContent = "An error occurred. Please try again.";
-    feedbackButton.disabled = false;
-    feedbackButton.textContent = "Send feedback";
-  }
+  feedbackMessage.textContent = "Thank you, your feedback has been sent.";
+  feedbackComment.value = "";
+  feedbackButton.textContent = "Feedback sent";
 });
   </script>
 
