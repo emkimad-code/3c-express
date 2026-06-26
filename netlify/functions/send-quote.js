@@ -79,6 +79,29 @@ exports.handler = async (event) => {
   try {
     const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
+const allowedOrigins = [
+  "https://www.3cexpress.fr",
+  "https://3cexpress.fr"
+];
+
+const origin = event.headers.origin || event.headers.Origin || "";
+const referer = event.headers.referer || event.headers.Referer || "";
+
+const isAllowedOrigin =
+  allowedOrigins.includes(origin) ||
+  allowedOrigins.some((site) => referer.startsWith(site));
+
+if (!isAllowedOrigin) {
+  console.log("REQUEST BLOCKED - INVALID ORIGIN:", { origin, referer });
+
+  return {
+    statusCode: 403,
+    body: JSON.stringify({
+      success: false,
+      message: "Invalid request origin"
+    })
+  };
+}
 const turnstileToken = data["cf-turnstile-response"];
 
 const turnstileResponse = await fetch(
