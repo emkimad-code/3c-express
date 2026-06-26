@@ -1,5 +1,48 @@
 const { Resend } = require("resend");
 
+function looksRandom(text) {
+  if (!text) return true;
+
+  const value = String(text).trim();
+
+  if (value.length < 2) return true;
+  if (value.length > 80) return true;
+
+  // Trop de lettres collées sans espace = souvent bot
+  if (/^[a-zA-Z]{15,}$/.test(value)) return true;
+
+  return false;
+}
+
+function isSpam(data) {
+  const company = data.company || "";
+  const contact = data.contact_person || "";
+  const email = data.email || "";
+
+  if (looksRandom(company)) return true;
+  if (looksRandom(contact)) return true;
+
+  if (!email.includes("@")) return true;
+
+  let totalQuantity = 0;
+  let totalWeight = 0;
+
+  Object.keys(data).forEach((key) => {
+    if (key.includes("_quantity")) {
+      totalQuantity += Number(data[key]) || 0;
+    }
+
+    if (key.includes("_weight")) {
+      totalWeight += Number(data[key]) || 0;
+    }
+  });
+
+  if (totalQuantity <= 0 || totalQuantity > 100000) return true;
+  if (totalWeight <= 0 || totalWeight > 100000) return true;
+
+  return false;
+}
+
 function getRecipients(service) {
   const air = "air@3cexpress.fr";
   const sea = "sea@3cexpress.fr";
@@ -36,6 +79,43 @@ exports.handler = async (event) => {
   try {
     const resend = new Resend(process.env.resend_api_key);
     const data = JSON.parse(event.body);
+const turnstileToken = data["cf-turnstile-response"];
+
+const turnstileResponse = await fetch(
+  "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      secret: process.env.TURNSTILE_SECRET_KEY,
+      response: turnstileToken
+    })
+  }
+);
+
+const turnstileResult = await turnstileResponse.json();
+
+if (!turnstileResult.success) {
+  console.log("TURNSTILE FAILED:", turnstileResult);
+
+  return {
+    statusCode: 403,
+    body: JSON.stringify({
+      success: false,
+      message: "Bot verification failed"
+    })
+  };
+}
+if (isSpam(data)) {
+  console.log("SPAM BLOCKED:", data);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ success: true })
+  };
+}
 const language = data.language || "en";
 
 const sheetResponse = await fetch("https://script.google.com/macros/s/AKfycbzt4Sj03Erc5HwOzTG0srZ2Pkib8LnjdWPR8n5jLKyr6ZyMG_ASxtXVgTDuXBKHyr7ncw/exec", {
