@@ -22,7 +22,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <noscript>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</noscript>
+
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="png" href="favicon.png">
 
@@ -542,14 +551,25 @@ data-size="invisible">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="footer.png" alt="Logo 3C Express" style="width: 260px; margin-bottom: 20px;">
+          <img
+  src="footer.png"
+  alt="3C Express Logo"
+  width="260"
+  height="260"
+  loading="lazy"
+  style="width:260px;height:auto;margin-bottom:20px;">
           <p class="footer-founded">Fondée en 2006</p>
           <p style="max-width: 320px;">
             Transport aérien, maritime et routier, dédouanement et solutions logistiques porte-à-porte depuis la France vers le monde.
           </p>
           <div class="footer-networks">
             <span>Membre de</span>
-            <img src="c5c-logo.png" alt="Réseau C5C">
+            <img
+  src="c5c-logo.png"
+  alt="C5C Network"
+  width="100"
+  height="100"
+  loading="lazy">
           </div>
         </div>
         <div>
