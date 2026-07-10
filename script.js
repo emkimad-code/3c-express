@@ -288,3 +288,27 @@ window.addEventListener("load", function () {
 
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+document.querySelectorAll(".map-placeholder").forEach((mapBox) => {
+  const button = mapBox.querySelector(".load-map-btn");
+
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    const mapSrc = mapBox.dataset.mapSrc;
+
+    if (!mapSrc) return;
+
+    const iframe = document.createElement("iframe");
+
+    iframe.src = mapSrc;
+    iframe.title = document.documentElement.lang === "fr"
+      ? "Localisation de 3C Express sur Google Maps"
+      : "3C Express location on Google Maps";
+
+    iframe.loading = "lazy";
+    iframe.allowFullscreen = true;
+
+    mapBox.replaceChildren(iframe);
+  });
+});

@@ -760,3 +760,35 @@ border: 1px solid #8A5A00;
     margin-bottom:16px;
     font-family:"Montserrat",sans-serif;
 }
+
+.map-placeholder {
+  min-height: 250px;
+  margin-top: 10px;
+  border-radius: 12px;
+  background: #eef2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.load-map-btn {
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #101664;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.load-map-btn:hover {
+  background: #0c1149;
+}
+
+.map-placeholder iframe {
+  width: 100%;
+  height: 250px;
+  border: 0;
+}
