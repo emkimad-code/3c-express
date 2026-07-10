@@ -58,12 +58,17 @@
           </span>
         </div>
       </a>
-<button class="menu-toggle" id="menu-toggle">
+<button
+    class="menu-toggle"
+    id="menu-toggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="main-navigation">
   <span></span>
   <span></span>
   <span></span>
 </button>
-      <nav>
+      <nav id="main-navigation">
         <ul class="nav-menu">
           <li><a href="#home">Accueil</a></li>
           <li class="dropdown">
@@ -415,7 +420,7 @@
                   <label>Détails des Colis <span class="required">*</span></label>
                   <div id="packages-container">
                     <div class="package-block">
-                      <h4>Colis 1</h4>
+                      <h3 class="package-title">Colis 1</h3>
                       <div class="package-grid">
                         <div class="field">
                           <label>Type de Colis <span class="required">*</span></label>

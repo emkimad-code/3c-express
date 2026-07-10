@@ -5,7 +5,7 @@
       --orange-dark: #A66F20;
       --white: #FFFFFF;
       --light: #F5F7FA;
-      --grey: #65758B;
+      --grey: #475569;
       --text: #1E293B;
       --border: #E2E8F0;
       --shadow: 0 18px 45px rgba(16, 22, 100, 0.15);
@@ -163,7 +163,7 @@
     .service-icon { width: 58px; height: 58px; border-radius: 16px; background: rgba(198, 138, 45, 0.12); color: var(--orange); display: grid; place-items: center; font-size: 28px; margin-bottom: 24px; }
     .service-card h3 { font-family: "Montserrat", sans-serif; color: var(--navy); font-size: 21px; margin-bottom: 12px; }
     .service-card p { color: var(--grey); font-size: 15px; margin-bottom: 20px; }
-    .learn-link { color: var(--orange); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 13px; text-transform: uppercase; }
+    .learn-link { color: var(--#8A5A00); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 13px; text-transform: uppercase; }
 
     /* SPLIT */
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
@@ -751,4 +751,10 @@ font-weight: 1000;
   .email-grid {
     grid-template-columns: 1fr !important;
   }
+}
+
+.package-title{
+    font-size:16px;
+    margin-bottom:16px;
+    font-family:"Montserrat",sans-serif;
 }
