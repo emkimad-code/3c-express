@@ -26,7 +26,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="png" href="favicon.png">
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -600,6 +599,28 @@ data-size="invisible">
       </div>
     </div>
   </footer>
+
+<script>
+  const turnstileBox = document.querySelector(".cf-turnstile");
+
+  if (turnstileBox) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        const script = document.createElement("script");
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        observer.disconnect();
+      }
+    }, {
+      rootMargin: "400px"
+    });
+
+    observer.observe(turnstileBox);
+  }
+</script>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
