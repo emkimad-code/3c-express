@@ -238,6 +238,9 @@
   inset:0;
   opacity:0;
   transition:opacity 0.8s ease;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
 }
 
 .hero-slide.active{
@@ -247,18 +250,6 @@
 .hero-slide:nth-child(1){
   background:
     url("air.jpg")
-    center center / cover no-repeat;
-}
-
-.hero-slide:nth-child(2){
-  background:
-    url("sea.jpg")
-    center center / cover no-repeat;
-}
-
-.hero-slide:nth-child(3){
-  background:
-    url("road.jpg")
     center center / cover no-repeat;
 }
 

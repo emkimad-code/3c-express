@@ -3,19 +3,37 @@ const slides = document.querySelectorAll(".hero-slide");
 let current = 0;
 
 window.addEventListener("load", () => {
-  setInterval(() => {
-    slides[current].classList.remove("active");
+  const delayedImages = [
+    { slide: 1, src: "sea.jpg" },
+    { slide: 2, src: "road.jpg" }
+  ];
 
-    current++;
+  delayedImages.forEach(({ slide, src }) => {
+    if (!slides[slide]) return;
 
-    if (current >= slides.length) {
-      current = 0;
-    }
+    const image = new Image();
 
-    slides[current].classList.add("active");
-  }, 3000);
-}); 
+    image.onload = () => {
+      slides[slide].style.backgroundImage = `url("${src}")`;
+    };
 
+    image.src = src;
+  });
+
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[current].classList.remove("active");
+
+      current++;
+
+      if (current >= slides.length) {
+        current = 0;
+      }
+
+      slides[current].classList.add("active");
+    }, 3000);
+  }
+});
 
 /* ACTIVE MENU LINK ON SCROLL */
 
