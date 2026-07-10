@@ -2,18 +2,20 @@ const slides = document.querySelectorAll(".hero-slide");
 
 let current = 0;
 
-setInterval(() => {
-  slides[current].classList.remove("active");
+window.addEventListener("load", () => {
+  setInterval(() => {
+    slides[current].classList.remove("active");
 
-  current++;
+    current++;
 
-  if(current >= slides.length){
-    current = 0;
-  }
+    if (current >= slides.length) {
+      current = 0;
+    }
 
-  slides[current].classList.add("active");
+    slides[current].classList.add("active");
+  }, 3000);
+}); 
 
-}, 3000);
 
 /* ACTIVE MENU LINK ON SCROLL */
 
@@ -255,7 +257,7 @@ if (serviceSelect && operationField && operationSelect) {
 
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.querySelector(".nav-menu");
 
