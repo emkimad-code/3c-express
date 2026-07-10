@@ -4,8 +4,8 @@ let current = 0;
 
 window.addEventListener("load", () => {
   const delayedImages = [
-    { slide: 1, src: "sea.jpg" },
-    { slide: 2, src: "road.jpg" }
+    { slide: 1, src: "sea.webp" },
+    { slide: 2, src: "road.webp" }
   ];
 
   delayedImages.forEach(({ slide, src }) => {

@@ -249,7 +249,7 @@ background-repeat: no-repeat;
 
 .hero-slide:nth-child(1){
   background:
-    url("air.jpg")
+    url("air.webp")
     center center / cover no-repeat;
 }
 
