@@ -38,27 +38,44 @@ window.addEventListener("load", () => {
 /* ACTIVE MENU LINK ON SCROLL */
 
 const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-menu a");
+const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 
-window.addEventListener("scroll", () => {
-  let currentSection = "";
+if (sections.length && navLinks.length && "IntersectionObserver" in window) {
+  const linksBySection = new Map(
+    Array.from(navLinks, (link) => [
+      link.getAttribute("href").slice(1),
+      link
+    ])
+  );
+
+  let activeLink = null;
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visible) return;
+
+    const nextLink = linksBySection.get(visible.target.id);
+
+    if (!nextLink || nextLink === activeLink) return;
+
+    if (activeLink) {
+      activeLink.classList.remove("active");
+    }
+
+    nextLink.classList.add("active");
+    activeLink = nextLink;
+  }, {
+    rootMargin: "-88px 0px -55% 0px",
+    threshold: [0, 0.1, 0.25]
+  });
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 140;
-
-    if (window.scrollY >= sectionTop) {
-      currentSection = section.getAttribute("id");
-    }
+    sectionObserver.observe(section);
   });
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("href") === "#" + currentSection) {
-      link.classList.add("active");
-    }
-  });
-});
+}
 
 /* ADD ANOTHER PACKAGE */
 
@@ -275,13 +292,14 @@ if (serviceSelect && operationField && operationSelect) {
 
 }
 
-window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.querySelector(".nav-menu");
 
   if (menuToggle && navMenu) {
     menuToggle.addEventListener("click", function () {
-      navMenu.classList.toggle("active");
+      const isOpen = navMenu.classList.toggle("active");
+menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
   }
 });

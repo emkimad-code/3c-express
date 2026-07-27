@@ -32,6 +32,15 @@
   href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
   onload="this.onload=null;this.rel='stylesheet'">
 
+<link
+  rel="preload"
+  as="image"
+  href="air.webp"
+  fetchpriority="high"
+>
+
+<link rel="stylesheet" href="style.css">
+
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="favicon.png">
 
@@ -323,7 +332,14 @@
     <section class="section" id="about">
       <div class="container split">
         <div class="image-card">
-         <img src="about.webp" alt="Air, Sea and Road Freight Solutions" loading="lazy">
+        <img
+  src="about.webp"
+  alt="Air, Sea and Road Freight Solutions"
+  width="900"
+  height="675"
+  loading="lazy"
+  decoding="async"
+>
           <div class="floating-card"><strong>Based near Paris CDG</strong><span>Strategic location for air freight and international logistics.</span></div>
         </div>
         <div>
